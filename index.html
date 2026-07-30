@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Program, team and billing model — palliative model of care</title>
+<title>Palliative Medicine Program Modeler (Ontario)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
 
   header{background:var(--ink);color:#EDEFEC;padding:20px 28px 18px}
   header h1{margin:0 0 2px;font-size:19px;font-weight:600;letter-spacing:-0.01em}
-  header p{margin:0;font-size:13px;color:#9AA5AE;max-width:70ch}
+  header p{margin:0;font-size:13px;color:#9AA5AE;max-width:72ch}
   .tabs{display:flex;gap:6px;margin:16px 0 0;padding-top:14px;border-top:1px solid #2C3945}
   .tabs button{font-family:inherit;font-size:13px;padding:7px 16px;border:1px solid #3A4753;
                background:#1E2933;color:#B7C0C8;border-radius:4px 4px 0 0;cursor:pointer}
@@ -50,42 +50,28 @@
   .outstats .stat .v.bad{color:var(--loss)}
   .progNote{grid-column:1 / -1;font-size:12.5px;color:var(--ink-soft);max-width:94ch;line-height:1.6;margin-top:2px}
 
-  .fteband{grid-column:1 / -1;margin-top:4px}
-  .fteband h3{margin:0 0 3px;font-size:13px;font-weight:600;color:var(--ink)}
-  .fteband p.h{margin:0 0 8px;font-size:12px;color:var(--ink-faint)}
-  table.fte{width:100%;max-width:560px;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--rule)}
-  table.fte th{text-align:right;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--rule-strong)}
-  table.fte th:first-child{text-align:left}
-  table.fte td{padding:5px 10px;text-align:right;border-bottom:1px solid var(--rule)}
-  table.fte td:first-child{text-align:left;color:var(--ink-soft)}
-  table.fte input{width:70px;padding:4px 6px;border:1px solid var(--rule-strong);border-radius:3px;background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink)}
-  table.fte input:focus{outline:2px solid var(--focus);outline-offset:1px}
-  table.fte td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
-  table.fte tr.totals td{font-weight:600;border-bottom:none;border-top:2px solid var(--ink);color:var(--ink);padding-top:8px}
-
-  .teambuilder{grid-column:1 / -1;margin-top:6px}
-  .teambuilder h3{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--ink)}
-  table.teams{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--rule)}
-  table.teams th{text-align:right;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);
-                 font-weight:600;padding:8px 10px;border-bottom:1px solid var(--rule-strong)}
-  table.teams th:first-child{text-align:left}
-  table.teams td{padding:5px 10px;text-align:right;border-bottom:1px solid var(--rule)}
-  table.teams td:first-child{text-align:left}
-  table.teams input{width:70px;padding:4px 6px;border:1px solid var(--rule-strong);border-radius:3px;
-       background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink)}
-  table.teams input.name{width:120px;text-align:left;font-family:"IBM Plex Sans",sans-serif}
-  table.teams input:focus{outline:2px solid var(--focus);outline-offset:1px}
-  table.teams td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
-  table.teams tr.totals td{font-weight:600;border-bottom:none;border-top:2px solid var(--ink);color:var(--ink);padding-top:8px}
-  table.teams .del{cursor:pointer;color:var(--ink-faint);border:none;background:none;font-size:15px;padding:0 4px}
-  table.teams .del:hover{color:var(--loss)}
-  .teambuilder .addbtn{margin-top:8px;font-family:inherit;font-size:12.5px;padding:6px 13px;border:1px solid var(--rule-strong);
-       background:var(--card);border-radius:3px;cursor:pointer;color:var(--ink-soft)}
-  .teambuilder .addbtn:hover{border-color:var(--ink-soft);color:var(--ink)}
+  .fteband,.teambuilder{grid-column:1 / -1;margin-top:4px}
+  .fteband h3,.teambuilder h3{margin:0 0 3px;font-size:13px;font-weight:600;color:var(--ink)}
+  .fteband p.h,.teambuilder p.h{margin:0 0 8px;font-size:12px;color:var(--ink-faint)}
+  table.grid2{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--rule)}
+  table.grid2.narrow{max-width:560px}
+  table.grid2 th{text-align:right;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--rule-strong)}
+  table.grid2 th:first-child{text-align:left}
+  table.grid2 td{padding:5px 10px;text-align:right;border-bottom:1px solid var(--rule)}
+  table.grid2 td:first-child{text-align:left;color:var(--ink-soft)}
+  table.grid2 input{width:70px;padding:4px 6px;border:1px solid var(--rule-strong);border-radius:3px;background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink)}
+  table.grid2 input.name{width:120px;text-align:left;font-family:"IBM Plex Sans",sans-serif}
+  table.grid2 input:focus{outline:2px solid var(--focus);outline-offset:1px}
+  table.grid2 td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+  table.grid2 tr.totals td{font-weight:600;border-bottom:none;border-top:2px solid var(--ink);color:var(--ink);padding-top:8px}
+  table.grid2 .del{cursor:pointer;color:var(--ink-faint);border:none;background:none;font-size:15px;padding:0 4px}
+  table.grid2 .del:hover{color:var(--loss)}
+  .addbtn{margin-top:8px;font-family:inherit;font-size:12.5px;padding:6px 13px;border:1px solid var(--rule-strong);background:var(--card);border-radius:3px;cursor:pointer;color:var(--ink-soft)}
+  .addbtn:hover{border-color:var(--ink-soft);color:var(--ink)}
   .allocwarn{font-size:12.5px;margin-top:8px;padding:7px 10px;border-left:3px solid var(--loss);background:#F7E7E5;color:#6E2822}
   .allocok{font-size:12.5px;margin-top:8px;padding:7px 10px;border-left:3px solid var(--next);background:#DCEAE4;color:#1F4A40}
 
-  main{display:grid;grid-template-columns:minmax(340px,440px) 1fr;align-items:start}
+  main{display:grid;grid-template-columns:minmax(340px,450px) 1fr;align-items:start}
   @media (max-width:980px){main{grid-template-columns:1fr}}
   .panel{padding:22px 28px 40px}
   .panel.controls{border-right:1px solid var(--rule);background:#EAEDE8}
@@ -103,23 +89,35 @@
   .rolecard.hosp{border-left-color:var(--hosp)} .rolecard.outp{border-left-color:var(--outp)}
   .rolecard h4{margin:0 0 3px;font-size:14px;font-weight:600}
   .rolecard .rolesub{margin:0 0 12px;font-size:11.5px;color:var(--ink-faint)}
-  .subblock{margin:12px 0 4px;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;border-bottom:1px solid var(--rule);padding-bottom:4px}
-  .rolegrid{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
-  .rolegrid label{font-size:12.5px;color:var(--ink-soft)}
-  .rolegrid input[type=number]{width:74px;padding:3px 6px;border:1px solid var(--rule-strong);border-radius:3px;
-       background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink)}
-  .rolegrid select{width:100%;padding:3px 6px;border:1px solid var(--rule-strong);border-radius:3px;background:#fff;font-family:inherit;font-size:12.5px;color:var(--ink)}
-  .rolegrid .full{grid-column:1 / -1;margin-top:4px}
-  .rolegrid input:focus,.rolegrid select:focus{outline:2px solid var(--focus);outline-offset:1px}
-  .chk{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);grid-column:1 / -1;padding:4px 0}
-  .chk input{width:auto}
-
+  .subblock{margin:12px 0 4px;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;border-bottom:1px solid var(--rule);padding-bottom:4px;grid-column:1 / -1;display:flex;justify-content:space-between;align-items:baseline}
+  .subblock .codes{font-family:"IBM Plex Mono",monospace;color:var(--ink-faint);font-weight:400;text-transform:none;letter-spacing:0;font-size:10.5px}
+  .rolegrid{display:grid;grid-template-columns:1fr 80px;gap:5px 12px;align-items:center}
+  .rolegrid label{font-size:12.5px;color:var(--ink-soft);line-height:1.3;padding-right:4px}
+  .rolegrid input[type=number]{width:80px;padding:4px 6px;border:1px solid var(--rule-strong);border-radius:3px;
+       background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink);min-width:0}
+  .rolegrid input:focus{outline:2px solid var(--focus);outline-offset:1px}
+  .chk{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);grid-column:1 / -1;padding:3px 0}
+  .chk input{width:auto;flex-shrink:0}
   .warn{font-size:12.5px;color:var(--loss);background:#F7E7E5;border-left:3px solid var(--loss);padding:7px 10px;margin-top:8px}
   .warn[hidden]{display:none}
 
   .card{background:var(--card);border:1px solid var(--rule);padding:20px 22px;margin-bottom:16px}
   .card h3{margin:0 0 3px;font-size:15px;font-weight:600}
   .card .sub{margin:0 0 16px;font-size:12.5px;color:var(--ink-faint);max-width:70ch}
+
+  .ftescale{background:#F4F6F2;border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin-bottom:16px}
+  .ftescale .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .ftescale .lab{font-size:13px;color:var(--ink);font-weight:600}
+  .ftescale .val{font-family:"IBM Plex Mono",monospace;font-size:16px;font-weight:600;color:var(--next)}
+  .ftescale input[type=range]{width:100%;accent-color:var(--next)}
+  .ftescale .ticks{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-faint);margin-top:3px;font-family:"IBM Plex Mono",monospace}
+  .ftescale .out{margin-top:10px;font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .ftescale .out strong{color:var(--ink);font-weight:600}
+
+  .statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+  .statbox{background:#F4F6F2;border:1px solid var(--rule);border-radius:4px;padding:10px 14px;text-align:center}
+  .statbox .sl{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-faint);font-weight:600}
+  .statbox .sv{font-size:18px;font-weight:600;font-family:"IBM Plex Mono",monospace;margin-top:2px}
 
   .bars{display:flex;flex-direction:column;gap:11px}
   .barrow{display:grid;grid-template-columns:118px 1fr 124px;align-items:center;gap:12px}
@@ -129,8 +127,7 @@
   .barrow .total{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600}
 
   table.out{width:100%;border-collapse:collapse;font-size:13.5px}
-  table.out th{text-align:right;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
-               color:var(--ink-faint);font-weight:600;padding:0 0 8px;border-bottom:1px solid var(--rule-strong)}
+  table.out th{text-align:right;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:0 0 8px;border-bottom:1px solid var(--rule-strong)}
   table.out th:first-child{text-align:left}
   table.out td{padding:7px 0;border-bottom:1px solid var(--rule);text-align:right}
   table.out td:first-child{text-align:left;color:var(--ink-soft)}
@@ -162,8 +159,8 @@
 <body>
 
 <header>
-  <h1>Program, team and billing model</h1>
-  <p>Program sizing, per-team allocation, and per-physician income by rotation. Two service lines — an inpatient team and an outpatient team that covers clinic, home visits and hospice together. Every physician bills individually; nothing here pools income.</p>
+  <h1>Palliative Medicine Program Modeler (Ontario)</h1>
+  <p>Program sizing, per-team allocation, and per-physician income by rotation and FTE. Inpatient and outpatient service lines modelled separately. Outpatient covers clinic, home visits, and hospice as one team, stratified by visit type. Every physician bills individually.</p>
   <div class="tabs" id="tabs"></div>
 </header>
 
@@ -171,33 +168,39 @@
 
 <section class="program">
   <h2>Program overview</h2>
-  <p class="subhead">Set the whole-program parameters, define your FTE bands, then allocate physicians and patients across teams. Teams need not be the same size — a busier area carries more of both.</p>
+  <p class="subhead">Set whole-program parameters, define FTE bands, then allocate physicians and patients across teams. Teams need not be the same size.</p>
   <div class="progrid">
     <div class="proinputs">
       <div class="field"><label for="totalPatients">Patients in program at any time</label><input class="num" id="totalPatients" type="number" step="10" value="480"></div>
       <div class="field"><label for="totalMDs">Physicians in program</label><input class="num" id="totalMDs" type="number" step="1" value="22"></div>
       <div class="field"><label for="patientsPerFTE">Patients per 1.0 FTE</label><input class="num" id="patientsPerFTE" type="number" step="1" value="45"></div>
+      <div class="field"><label for="clinweeks">Clinical weeks per 1.0 FTE / year</label><input class="num" id="clinweeks" type="number" step="1" value="44"></div>
+      <div class="field"><label for="fteDays">Clinical days per 1.0 FTE week</label><input class="num" id="fteDays" type="number" step="0.5" value="5"></div>
+      <div class="field"><label for="block">Block length, weeks</label><input class="num" id="block" type="number" step="1" value="2"></div>
+      <div class="field"><label for="stipend">On-call and stipends, per 1.0 FTE / yr</label><input class="num" id="stipend" type="number" step="500" value="18000"></div>
+      <div class="field"><label for="adhoc">Ad hoc codes, per 1.0 FTE / yr</label><input class="num" id="adhoc" type="number" step="250" value="4000"></div>
     </div>
     <div class="outstats">
       <div class="stat"><span class="l">FTE required for the panel</span><span class="v num" id="outFTE">—</span></div>
       <div class="stat"><span class="l">FTE the roster supplies</span><span class="v num" id="outFTEsupply">—</span></div>
-      <div class="stat"><span class="l">Physicians suggested</span><span class="v num" id="outMDsNeeded">—</span></div>
+      <div class="stat"><span class="l">Physicians in bands</span><span class="v num" id="outHead">—</span></div>
       <div class="stat"><span class="l">Patients per MD, program</span><span class="v num" id="outPPMD">—</span></div>
     </div>
 
     <div class="fteband">
       <h3>FTE bands</h3>
-      <p class="h">Assign whole physicians to each commitment level rather than one average. The weighted FTE drives the supply figure above.</p>
-      <table class="fte">
-        <thead><tr><th>Band</th><th>% FTE</th><th># Physicians</th><th>FTE contributed</th></tr></thead>
+      <p class="h">Assign whole numbers of physicians to each FTE level. Clinical days per week = (% FTE ÷ 100) × the days-per-week setting above.</p>
+      <table class="grid2 narrow">
+        <thead><tr><th>Band</th><th>% FTE</th><th># Physicians</th><th>Clinical days / wk</th><th>FTE contributed</th></tr></thead>
         <tbody id="fteBody"></tbody>
-        <tfoot><tr class="totals"><td>Total</td><td></td><td class="n" id="fteHeadcount">—</td><td class="n" id="fteWeighted">—</td></tr></tfoot>
+        <tfoot><tr class="totals"><td>Total</td><td></td><td class="n" id="fteHeadcount">—</td><td></td><td class="n" id="fteWeighted">—</td></tr></tfoot>
       </table>
     </div>
 
     <div class="teambuilder">
       <h3>Teams</h3>
-      <table class="teams">
+      <p class="h">Allocate physicians and patients by zone. FTE needed is calculated from your patients-per-FTE ratio above.</p>
+      <table class="grid2">
         <thead><tr><th>Team</th><th>Physicians</th><th>Patients</th><th>Patients / MD</th><th>FTE needed</th><th></th></tr></thead>
         <tbody id="teamBody"></tbody>
         <tfoot><tr class="totals"><td>Allocated</td><td class="n" id="tAllocMD">—</td><td class="n" id="tAllocPt">—</td><td class="n" id="tAllocPPMD">—</td><td class="n" id="tAllocFTE">—</td><td></td></tr></tfoot>
@@ -214,71 +217,69 @@
   <section class="panel controls">
     <h2 class="section">Team being modelled</h2>
     <div class="teamselect"><label for="activeTeam">Show billing for</label><select id="activeTeam"></select></div>
-    <p class="hint">Service-line settings below apply to the selected team in the active scenario. Per-MD income scales to that team's physician count.</p>
-    <div class="field"><label for="clinweeks">Clinical weeks per MD, per year</label><input class="num" id="clinweeks" type="number" step="1" value="44"></div>
-    <div class="field"><label for="block">Block length, weeks</label><input class="num" id="block" type="number" step="1" value="2"></div>
-    <div class="field"><label for="stipend">On-call and stipends, per MD/yr</label><input class="num" id="stipend" type="number" step="500" value="18000"></div>
-    <div class="field"><label for="adhoc">Ad hoc codes, per MD/yr</label><input class="num" id="adhoc" type="number" step="250" value="4000"></div>
+    <p class="hint">Visit counts below are per physician per week at full time. The FTE slider on the right scales an individual physician's income and days.</p>
 
     <div id="roleCards"></div>
     <div class="warn" id="rosterWarn" hidden></div>
 
     <h2 class="section">G512 case management</h2>
-    <p class="hint">Billed per MD, one physician per patient per week. Enter weeks directly, out of 52.</p>
-    <div class="field"><label for="g_panel">Community patients per MD</label><input class="num" id="g_panel" type="number" step="1" value="16"></div>
-    <div class="field"><label for="g_weeks">Weeks G512 billed per patient/yr</label><input class="num" id="g_weeks" type="number" step="1" value="38"></div>
+    <p class="hint">One physician per patient per week. Enter weeks directly (out of 52).</p>
+    <div class="field"><label for="g_panel">Community patients per 1.0 FTE MD</label><input class="num" id="g_panel" type="number" step="1" value="16" oninput="this.dataset.manual='1'"></div>
+    <div class="field"><label for="g_weeks">Weeks G512 billed per patient / yr</label><input class="num" id="g_weeks" type="number" step="1" value="52"></div>
 
     <h2 class="section">CPOC and BBOC</h2>
-    <p class="hint">On-call program payments, annual per physician.</p>
-    <div class="field"><label for="cpoc">CPOC, per MD/yr</label><input class="num" id="cpoc" type="number" step="250" value="9000"></div>
-    <div class="field"><label for="bboc">BBOC, per MD/yr</label><input class="num" id="bboc" type="number" step="250" value="6000"></div>
+    <p class="hint">On-call program payments, annual per 1.0 FTE physician.</p>
+    <div class="field"><label for="cpoc">CPOC, per 1.0 FTE / yr</label><input class="num" id="cpoc" type="number" step="250" value="9000"></div>
+    <div class="field"><label for="bboc">BBOC, per 1.0 FTE / yr</label><input class="num" id="bboc" type="number" step="250" value="6000"></div>
   </section>
 
   <section class="panel results">
+    <div class="ftescale">
+      <div class="top"><span class="lab">Billing based on FTE</span><span class="val" id="sliderVal">1.0</span></div>
+      <input type="range" id="fteSlider" min="0.2" max="1.5" step="0.05" value="1">
+      <div class="ticks"><span>0.2</span><span>0.5</span><span>0.8</span><span>1.0</span><span>1.2</span><span>1.5</span></div>
+      <div class="out" id="sliderOut"></div>
+    </div>
+
+    <div class="statrow" id="keyStats"></div>
+
     <div class="card">
-      <h3>Annual income per physician, by scenario</h3>
-      <p class="sub">Selected team. Fee-for-service, G512, CPOC and BBOC, on-call, stipends and ad hoc, one physician, one year</p>
+      <h3>Annual income for this physician, by scenario</h3>
+      <p class="sub">Selected team, scaled to the FTE above</p>
       <div class="bars" id="scenarioBars"></div>
     </div>
 
     <div class="card">
       <h3>Can this team cover its roster?</h3>
-      <p class="sub">Team <strong id="coverTeamName"></strong>, scenario <strong id="coverScenarioName"></strong></p>
+      <p class="sub">Team <strong id="coverTeamName"></strong>, scenario <strong id="coverScenarioName"></strong>. Service line staffing is expressed in FTE, accounting for the team's physician count and their individual FTE levels.</p>
       <div class="callout" id="coverNote"></div>
       <table class="out" style="margin-top:16px">
-        <tr><th>Service line</th><th>MDs per week</th><th>Weeks per MD / yr</th><th>Blocks per MD / yr</th></tr>
+        <tr><th>Service line</th><th>FTE per week</th><th>FTE-weeks / yr</th><th>Blocks / yr</th></tr>
         <tbody id="rosterBody"></tbody>
       </table>
     </div>
 
     <div class="card">
-      <h3>What one MD bills per rotation, by line</h3>
-      <p class="sub">One block = <span id="blockLenNote"></span> weeks. Per physician, not pooled.</p>
+      <h3>Physician billing per rotation</h3>
+      <p class="sub">One full rotation = <span id="rotDesc"></span>. Figures are at the slider FTE and per physician, not pooled.</p>
       <table class="out">
-        <tr><th>Service line</th><th>Per week</th><th>Per rotation</th><th>Rotations / yr</th><th>Annual, this line</th></tr>
+        <tr><th>Service line</th><th>Per week</th><th>Per block</th><th>Blocks / yr</th><th>Annual, this line</th></tr>
         <tbody id="perRotationBody"></tbody>
       </table>
     </div>
 
     <div class="card">
-      <h3>Annual income per physician, active scenario</h3>
-      <p class="sub">Weighted by the weeks each physician spends on each line over a year</p>
+      <h3>Annual income, active scenario</h3>
+      <p class="sub">At <span id="incFTE"></span> FTE — FFS, G512, CPOC and BBOC, and non-FFS income all scale with FTE</p>
       <table class="out">
-        <tr><th>Source</th><th>Weeks / yr</th><th>Amount</th></tr>
+        <tr><th>Source</th><th>At 1.0 FTE</th><th>At <span id="incFTE2"></span> FTE</th></tr>
         <tbody id="incomeBody"></tbody>
       </table>
     </div>
 
     <div class="card">
-      <h3>Revenue per visit type, by code</h3>
-      <p class="sub">Each visit type built line by line from the codes it generates. K023 units follow the minutes set for that visit.</p>
-      <table class="item">
-        <tbody id="itemBody"></tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Annual claim volume, per physician</h3>
+      <h3>Annual claim volume, this physician</h3>
+      <p class="sub">At <span id="volFTE"></span> FTE</p>
       <table class="out">
         <tr><th>Code</th><th>Claims</th><th>Value</th><th>Share</th></tr>
         <tbody id="codeBody"></tbody>
@@ -286,8 +287,16 @@
     </div>
 
     <div class="card">
+      <h3>Revenue per visit type, by code</h3>
+      <p class="sub">Each visit type built from the codes it generates. Independent of FTE.</p>
+      <table class="item">
+        <tbody id="itemBody"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
       <h3>Does the day fit?</h3>
-      <p class="sub">Direct patient contact implied by visit counts and minutes per line</p>
+      <p class="sub">Visits per clinical day at 1.0 FTE (based on days-per-week setting)</p>
       <div class="callout" id="hoursNote"></div>
     </div>
   </section>
@@ -295,482 +304,434 @@
 
 <details class="feecard">
   <summary>Fee schedule</summary>
-  <p class="hint">Fixed values, shared across all scenarios and teams. Edit once here.</p>
+  <p class="hint">Fixed values, shared across all scenarios and teams. Edit once here. K301 pays at 85% of the base code — the model applies that automatically to virtual clinic follow-ups.</p>
   <div class="feegrid">
-    <div class="field"><label><span class="code">A945</span>Special palliative consultation</label><input class="num" id="f_A945" type="number" step="0.25" value="144.75"></div>
-    <div class="field"><label><span class="code">C882</span>Palliative subsequent, GP</label><input class="num" id="f_C882" type="number" step="0.25" value="38.00"></div>
-    <div class="field"><label><span class="code">A900</span>Complex house call assessment</label><input class="num" id="f_A900" type="number" step="0.25" value="45.15"></div>
-    <div class="field"><label><span class="code">K023</span>Palliative support, per 30 min</label><input class="num" id="f_K023" type="number" step="0.25" value="62.75"></div>
-    <div class="field"><label><span class="code">B966</span>Home visit travel premium</label><input class="num" id="f_B966" type="number" step="0.25" value="36.40"></div>
-    <div class="field"><label><span class="code">B998</span>Home visit, person seen</label><input class="num" id="f_B998" type="number" step="0.25" value="40.00"></div>
-    <div class="field"><label><span class="code">E082</span>MRP premium</label><input class="num" id="f_E082" type="number" step="0.25" value="30.00"></div>
-    <div class="field"><label><span class="code">K121</span>Inpatient case conference / rounds, per unit</label><input class="num" id="f_K121" type="number" step="0.25" value="32.45"></div>
-    <div class="field"><label><span class="code">K700</span>Outpatient case conference / rounds, per unit</label><input class="num" id="f_K700" type="number" step="0.25" value="32.45"></div>
+    <div class="field"><label><span class="code">A945</span>Special palliative consultation</label><input class="num" id="f_A945" type="number" step="0.25" value="174.25"></div>
+    <div class="field"><label><span class="code">C882</span>Palliative follow-up, GP</label><input class="num" id="f_C882" type="number" step="0.25" value="40.05"></div>
+    <div class="field"><label><span class="code">A102</span>Phone follow-up, limited (&lt;10 min, flat rate)</label><input class="num" id="f_A102" type="number" step="0.25" value="15.00"></div>
+    <div class="field"><label><span class="code">A900</span>Complex house call assessment</label><input class="num" id="f_A900" type="number" step="0.25" value="64.80"></div>
+    <div class="field"><label><span class="code">K023</span>Palliative support, per 30 min</label><input class="num" id="f_K023" type="number" step="0.25" value="85.25"></div>
+    <div class="field"><label><span class="code">B966</span>Home visit travel premium</label><input class="num" id="f_B966" type="number" step="0.25" value="37.40"></div>
+    <div class="field"><label><span class="code">B998</span>Home visit, person seen</label><input class="num" id="f_B998" type="number" step="0.25" value="91.80"></div>
+    <div class="field"><label><span class="code">E083</span>MRP premium (30% of C882, auto-calculated)</label><input class="num" id="f_E083" type="number" step="0.01" value="12.02" readonly style="background:#f4f6f2;color:var(--ink-soft)"></div>
+    <div class="field"><label><span class="code">K121</span>Inpatient case conference / rounds</label><input class="num" id="f_K121" type="number" step="0.25" value="37.05"></div>
+    <div class="field"><label><span class="code">K700</span>Outpatient case conference / rounds</label><input class="num" id="f_K700" type="number" step="0.25" value="37.05"></div>
     <div class="field"><label><span class="code">G512</span>Weekly case management</label><input class="num" id="f_G512" type="number" step="0.25" value="67.75"></div>
+    <p style="font-size:11.5px;color:var(--ink-faint);margin:8px 0 0">Rates from MOH Schedule of Benefits, effective April 1, 2026. E083 is 30% of C882 and updates automatically when C882 changes.</p>
   </div>
 </details>
 
 <footer>
-  Fee amounts shipped with this file are placeholders. C882 is the palliative subsequent visit code for GPs; specialists billing C982 should be modelled separately. A new hospital consult is modelled as A945 (50-minute consultation); subsequent visits as K023 for the greater part of each 20-minute period after, per your specification, with an MRP premium (E082) applied to the MRP subset. K121 and K700 are case conference / rounds codes billed per unit; enter units per week to reflect your team's rounding practice. Community new consults are A945 plus optional K023 and the home visit premiums B966 and B998; community follow-ups are K023-based with the home premiums. Bullet or educational rounds are not case conferences under the Schedule — K121 and K700 require a most-responsible physician and at least two other participants discussing an individual patient, with record and time-keeping requirements. G511, K071 and K072 are not eligible in a week where G512 is billed. CPOC and BBOC are flat annual amounts per physician; confirm the per-MD distribution with your call group. "Current" approximates today's unstructured model and will not match your remittance data — calibrate before relying on the comparison. This model projects gross billings only, with no allowance for overhead, taxes, or corporate structure.
+  All figures are estimates. Rates are from the MOH Schedule of Benefits effective April 1, 2026. E083 is a 30% add-on to C882 (not a flat fee) — at current rates C882 + E083 = $52.07 versus K023 at $85.25, so K023 is the higher-value code for visits of 20 minutes or more. Visit types are entered as counts per week, not minutes. New consults: A945 + K023. Inpatient follow-ups: C882 (under 20 min) or K023 (20 min or more). MRP/PCU patients: C882 + E083 or K023 (toggle). Clinic in-person follow-up: K023. Clinic virtual follow-up: K023 + K301 at 85% of K023. Clinic phone follow-up (under 10 min): A102, a limited phone virtual care code paying a flat rate; A102 has the phone identifier built in so K300/K301 are not added separately — note that A102 is a limited virtual care code intended for patients not seen in person within the preceding 24 months, so for most established palliative patients the comprehensive virtual care route (K023 + K301) may be more appropriate and better compensated. K301 is a modality indicator (telephone), and payment rules require an existing physician-patient relationship and the patient seen in person within the preceding 24 months. Home visits: A945 + K023 (new) or K023 (follow-up), plus B966 and B998. First hospice visit: A945 + K023 + B966 + B998. Hospice follow-up: K023. Outpatient rounds: K700. Note that G512 and its associated management fees (G500, G512, K090, K091 etc.) should be used for phone management rather than virtual care codes — telephone management of patients is already included in G512. K121 and K700 are case conference codes requiring MRP participation and at least two other participants with time-keeping; bullet rounds or educational rounds do not qualify. The FTE slider scales all income linearly, which is an approximation — on-call income may not scale proportionally depending on your group's call distribution. "Current" approximates the unstructured model and will not match remittance data. Gross billings only; no overhead, tax or corporate structure allowance.
 </footer>
 
 <script>
 const $ = id => document.getElementById(id);
-const v = id => { const el = $(id); return el ? (parseFloat(el.value) || 0) : 0; };
-const money = n => (n < 0 ? "\u2212$" : "$") + Math.abs(Math.round(n)).toLocaleString("en-CA");
-const money2 = n => (n < 0 ? "\u2212$" : "$") + Math.abs(n).toFixed(2);
+const v = id => { const el = $(id); return el ? (parseFloat(el.value)||0) : 0; };
+const money = n => (n<0?"\u2212$":"$")+Math.abs(Math.round(n)).toLocaleString("en-CA");
+const money2 = n => (n<0?"\u2212$":"$")+Math.abs(n).toFixed(2);
+const fmtfte = f => f.toFixed(2).replace(/\.?0+$/,"") || "0";
 
-const MODES = [
-  ["none", "assessment fee only"],
-  ["beyond50", "assessment fee, K023 beyond 50 min"],
-  ["instead", "K023 replaces assessment over 20 min"]
-];
-
-// ---- FTE bands ----
-let fteBands = [
-  { pct:100, count:14 },
-  { pct:80, count:5 },
-  { pct:60, count:2 },
-  { pct:40, count:1 }
-];
-
-// ---- Scenarios: current + expected only ----
-const ORDER = ["current", "expected"];
-const SCEN_LABEL = { current:"Current (unstructured)", expected:"Expected (rotational)" };
+let fteBands = [{pct:100,count:14},{pct:80,count:5},{pct:60,count:2},{pct:40,count:1}];
+const ORDER = ["current","expected"];
+const SCEN_LABEL = {current:"Current (unstructured)",expected:"Expected (rotational)"};
 let active = "expected";
+let fte = 1.0;
 
-// Default line params. Inpatient uses explicit new/followup/MRP volumes.
-// Outpatient combines clinic + home visits + hospice, split into new consults and follow-ups.
 function defaultLines(scen){
   const rot = scen === "expected";
   return {
-    hosp: {
-      staff: rot ? 2.2 : 1.4,
-      days: rot ? 5 : 3,
-      newPerDay: rot ? 2 : 1.5,
-      fuPerDay: rot ? 7 : 5,           // total subsequent visits/day
-      mrpShare: rot ? 60 : 40,         // % of subsequent that are MRP patients (E082)
-      newMin: rot ? 55 : 55,           // consult minutes (A945 = 50 min service)
-      fuMin: rot ? 25 : 20,            // subsequent minutes -> K023 units for part beyond
-      fuMode: "instead",               // subsequent billed via K023
-      roundsUnits: rot ? 3 : 2         // K121 units per week
+    hosp:{
+      staff: rot?2.2:1.4,
+      newPerWk:   rot?8:6,
+      fuShortWk:  rot?10:12,
+      fuLongWk:   rot?14:8,
+      mrpPerWk:   rot?12:8,
+      mrpMode:    "c882",
+      roundsUnits:rot?3:2
     },
-    outp: {
-      staff: rot ? 2.0 : 2.3,
-      days: rot ? 5 : 3,
-      newPerDay: rot ? 1.5 : 1.5,
-      fuPerDay: rot ? 5 : 4,
-      newMin: rot ? 75 : 60,           // new home/clinic consult
-      newMode: "beyond50",             // A945 + K023 beyond 50
-      fuMin: rot ? 45 : 35,            // follow-up minutes -> K023
-      home: true,                      // apply B966 + B998
-      roundsUnits: rot ? 2 : 1         // K700 units per week
+    outp:{
+      staff: rot?2.0:2.3,
+      clinNewWk:   rot?3:2,
+      clinFuIpWk:  rot?6:5,
+      clinFuVirtWk:rot?4:3,
+      clinPhoneWk: rot?6:4,
+      hvNewWk:     rot?3:2,
+      hvFuWk:      rot?10:7,
+      hspAdmWk:    rot?1:1,
+      hspFuWk:     rot?4:3,
+      roundsUnits: rot?2:1
     }
   };
 }
 const SCENARIOS = {
-  current:  { lines: defaultLines("current"),  g512:{panel:14, weeks:40} },
-  expected: { lines: defaultLines("expected"), g512:{panel:16, weeks:38} }
+  current: {lines:defaultLines("current"), g512:{panel:25,weeks:52}},
+  expected:{lines:defaultLines("expected"),g512:{panel:25,weeks:52}}
 };
 
-// Teams
 let teams = [
-  { id:"t1", name:"Northwest", mds:6, patients:150 },
-  { id:"t2", name:"Southwest", mds:5, patients:120 },
-  { id:"t3", name:"Northeast", mds:6, patients:130 },
-  { id:"t4", name:"Southeast", mds:5, patients:80 }
+  {id:"t1",name:"Northwest",mds:6,patients:150},
+  {id:"t2",name:"Southwest",mds:5,patients:120},
+  {id:"t3",name:"Northeast",mds:6,patients:130},
+  {id:"t4",name:"Southeast",mds:5,patients:80}
 ];
-let activeTeam = "t1";
-let teamSeq = 5;
+let activeTeam = "t1", teamSeq = 5;
 const teamState = {};
-function ensureTeamState(tid){
-  const t = teams.find(x => x.id === tid);
-  if (!teamState[tid]) teamState[tid] = {};
+function ensureTS(tid){
+  const t=teams.find(x=>x.id===tid);
+  if (!teamState[tid]) teamState[tid]={};
+  const ppmd = t && t.mds > 0 ? Math.round(t.patients / t.mds) : 16;
   for (const k of ORDER){
     if (!teamState[tid][k]){
-      const mult = t ? Math.max(t.mds, 1) / 5 : 1;
-      const base = defaultLines(k);
-      base.hosp.staff *= mult; base.outp.staff *= mult;
-      teamState[tid][k] = { lines: base, g512: JSON.parse(JSON.stringify(SCENARIOS[k].g512)) };
+      const mult = t?Math.max(t.mds,1)/5:1;
+      const base=defaultLines(k);
+      base.hosp.staff*=mult; base.outp.staff*=mult;
+      teamState[tid][k]={lines:base,g512:{panel:ppmd,weeks:52}};
     }
   }
 }
 
-const LINE_META = {
-  hosp: { name:"Inpatient consults and PCU", cls:"hosp" },
-  outp: { name:"Outpatient: clinic, home visits, hospice", cls:"outp" }
-};
-
 function buildTabs(){
-  $("tabs").innerHTML = ORDER.map(k =>
-    "<button data-k='" + k + "'" + (k === active ? " class='active'" : "") + ">" + SCEN_LABEL[k] + "</button>").join("");
-  document.querySelectorAll("#tabs button").forEach(b => b.addEventListener("click", () => { saveDOM(); active = b.dataset.k; loadDOM(); buildTabs(); render(); }));
+  $("tabs").innerHTML = ORDER.map(k=>"<button data-k='"+k+"'"+(k===active?" class='active'":"")+">"+SCEN_LABEL[k]+"</button>").join("");
+  document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>{saveDOM();active=b.dataset.k;loadDOM();buildTabs();render();}));
 }
-
-function inp(id, step){ return "<input type='number' id='" + id + "' step='" + step + "'>"; }
-function labelRow(label, id, step){ return "<label for='" + id + "'>" + label + "</label>" + inp(id, step); }
-function sel(id){ return "<select id='" + id + "'>" + MODES.map(m => "<option value='" + m[0] + "'>" + m[1] + "</option>").join("") + "</select>"; }
+function inp(id,step){return "<input type='number' id='"+id+"' step='"+step+"'>";}
+function lrow(lbl,id,step){return "<label for='"+id+"'>"+lbl+"</label>"+inp(id,step);}
 
 function buildRoles(){
-  const html = `
+  const html=`
   <div class='rolecard hosp'>
     <h4>Inpatient consults and PCU</h4>
-    <p class='rolesub'>New consults, subsequent visits and MRP patients entered separately. Per-day counts are per physician.</p>
+    <p class='rolesub'>Visit counts per physician per week at 1.0 FTE.</p>
     <div class='rolegrid'>
-      ${labelRow("MDs per week", "hosp_staff", 0.1)}
-      ${labelRow("Days per week", "hosp_days", 0.5)}
-      <div class='subblock full'>New consults</div>
-      ${labelRow("New consults per day", "hosp_newPerDay", 0.5)}
-      ${labelRow("Minutes per consult", "hosp_newMin", 5)}
-      <div class='subblock full'>Subsequent visits</div>
-      ${labelRow("Subsequent visits per day", "hosp_fuPerDay", 0.5)}
-      ${labelRow("Minutes per subsequent", "hosp_fuMin", 5)}
-      ${labelRow("Of these, MRP patients %", "hosp_mrpShare", 5)}
-      <div class='subblock full'>Rounds</div>
-      ${labelRow("K121 units per week", "hosp_roundsUnits", 1)}
+      ${lrow("FTE on this line per week","hosp_staff",0.1)}
+      <div class='subblock full'>New consults <span class='codes'>A945 + K023</span></div>
+      ${lrow("New consults per week","hosp_newPerWk",1)}
+      <div class='subblock full'>Follow-up visits</div>
+      ${lrow("Follow-up &lt; 20 min (C882) / wk","hosp_fuShortWk",1)}
+      ${lrow("Follow-up &ge; 20 min (K023) / wk","hosp_fuLongWk",1)}
+      <div class='subblock full'>MRP / PCU patients</div>
+      ${lrow("MRP patient-visits per week","hosp_mrpPerWk",1)}
+      <div class='chk'><input type='checkbox' id='hosp_mrpK023'><label for='hosp_mrpK023'>Visits are &ge;20 min — bill as K023 (otherwise C882 + E083)</label></div>
+      <div style='grid-column:1/-1;font-size:11.5px;color:var(--ink-faint);margin:-2px 0 4px;line-height:1.4'>C882 + E083 (30%) = $52.07 &nbsp;|&nbsp; K023 = $85.25 at 2026 rates. K023 is higher for visits &ge;20 min.</div>
+      <div class='subblock full'>Rounds <span class='codes'>K121</span></div>
+      ${lrow("K121 units per week","hosp_roundsUnits",1)}
     </div>
   </div>
   <div class='rolecard outp'>
     <h4>Outpatient: clinic, home visits, hospice</h4>
-    <p class='rolesub'>One combined team. New consults bill A945 (\u00b1 K023); follow-ups bill K023. Per-day counts are per physician.</p>
+    <p class='rolesub'>One combined team. B966 and B998 apply to home visits and hospice only, not clinic.</p>
     <div class='rolegrid'>
-      ${labelRow("MDs per week", "outp_staff", 0.1)}
-      ${labelRow("Days per week", "outp_days", 0.5)}
-      <div class='subblock full'>New consults (A945 \u00b1 K023)</div>
-      ${labelRow("New consults per day", "outp_newPerDay", 0.5)}
-      ${labelRow("Minutes per consult", "outp_newMin", 5)}
-      <div class='full'><label for='outp_newMode'>K023 on new consults</label>${sel("outp_newMode")}</div>
-      <div class='subblock full'>Follow-ups (K023)</div>
-      ${labelRow("Follow-ups per day", "outp_fuPerDay", 0.5)}
-      ${labelRow("Minutes per follow-up", "outp_fuMin", 5)}
-      <div class='chk'><input type='checkbox' id='outp_home'><label for='outp_home'>Apply B966 and B998 to every visit</label></div>
-      <div class='subblock full'>Rounds</div>
-      ${labelRow("K700 units per week", "outp_roundsUnits", 1)}
+      ${lrow("FTE on this line per week","outp_staff",0.1)}
+      <div class='subblock full'>Clinic <span class='codes'>no B966/B998</span></div>
+      ${lrow("Clinic new consult / wk","outp_clinNewWk",1)}
+      ${lrow("Clinic follow-up, in-person / wk (K023)","outp_clinFuIpWk",1)}
+      ${lrow("Clinic follow-up, virtual / wk (K023 + K301)","outp_clinFuVirtWk",1)}
+      ${lrow("Clinic phone follow-up &lt;10 min / wk (A102)","outp_clinPhoneWk",1)}
+      <div class='subblock full'>Home visits <span class='codes'>A945+K023 / K023 + B966+B998</span></div>
+      ${lrow("Home visit, new consult / wk","outp_hvNewWk",1)}
+      ${lrow("Home visit, follow-up / wk","outp_hvFuWk",1)}
+      <div class='subblock full'>Hospice <span class='codes'>first visit has B966+B998</span></div>
+      ${lrow("Hospice admission (new) / wk","outp_hspAdmWk",1)}
+      ${lrow("Hospice follow-up / wk","outp_hspFuWk",1)}
+      <div class='subblock full'>Rounds <span class='codes'>K700</span></div>
+      ${lrow("K700 units per week","outp_roundsUnits",1)}
     </div>
   </div>`;
   $("roleCards").innerHTML = html;
-  document.querySelectorAll("#roleCards input, #roleCards select").forEach(el => el.addEventListener("input", render));
+  document.querySelectorAll("#roleCards input").forEach(el=>el.addEventListener("input",render));
 }
 
 function loadDOM(){
-  ensureTeamState(activeTeam);
-  const st = teamState[activeTeam][active];
-  const setv = (id, val) => { const el = $(id); if (!el) return; if (el.type === "checkbox") el.checked = !!val; else el.value = val; };
-  const h = st.lines.hosp, o = st.lines.outp;
-  setv("hosp_staff", h.staff); setv("hosp_days", h.days); setv("hosp_newPerDay", h.newPerDay);
-  setv("hosp_newMin", h.newMin); setv("hosp_fuPerDay", h.fuPerDay); setv("hosp_fuMin", h.fuMin);
-  setv("hosp_mrpShare", h.mrpShare); setv("hosp_roundsUnits", h.roundsUnits);
-  setv("outp_staff", o.staff); setv("outp_days", o.days); setv("outp_newPerDay", o.newPerDay);
-  setv("outp_newMin", o.newMin); setv("outp_newMode", o.newMode); setv("outp_fuPerDay", o.fuPerDay);
-  setv("outp_fuMin", o.fuMin); setv("outp_home", o.home); setv("outp_roundsUnits", o.roundsUnits);
-  setv("g_panel", st.g512.panel); setv("g_weeks", st.g512.weeks);
+  ensureTS(activeTeam);
+  const st=teamState[activeTeam][active];
+  const s=(id,val)=>{const el=$(id);if(!el)return;el.type==="checkbox"?el.checked=!!val:el.value=val;};
+  const h=st.lines.hosp,o=st.lines.outp;
+  s("hosp_staff",h.staff);s("hosp_newPerWk",h.newPerWk);s("hosp_fuShortWk",h.fuShortWk);
+  s("hosp_fuLongWk",h.fuLongWk);s("hosp_mrpPerWk",h.mrpPerWk);s("hosp_mrpK023",h.mrpMode==="k023");s("hosp_roundsUnits",h.roundsUnits);
+  s("outp_staff",o.staff);s("outp_clinNewWk",o.clinNewWk);s("outp_clinFuIpWk",o.clinFuIpWk);s("outp_clinFuVirtWk",o.clinFuVirtWk);s("outp_clinPhoneWk",o.clinPhoneWk||0);
+  s("outp_hvNewWk",o.hvNewWk);s("outp_hvFuWk",o.hvFuWk);s("outp_hspAdmWk",o.hspAdmWk);s("outp_hspFuWk",o.hspFuWk);s("outp_roundsUnits",o.roundsUnits);
+  s("g_panel",st.g512.panel);s("g_weeks",st.g512.weeks);
 }
 function saveDOM(){
-  ensureTeamState(activeTeam);
-  const st = teamState[activeTeam][active];
-  const h = st.lines.hosp, o = st.lines.outp;
-  h.staff=v("hosp_staff"); h.days=v("hosp_days"); h.newPerDay=v("hosp_newPerDay");
-  h.newMin=v("hosp_newMin"); h.fuPerDay=v("hosp_fuPerDay"); h.fuMin=v("hosp_fuMin");
-  h.mrpShare=v("hosp_mrpShare"); h.roundsUnits=v("hosp_roundsUnits");
-  o.staff=v("outp_staff"); o.days=v("outp_days"); o.newPerDay=v("outp_newPerDay");
-  o.newMin=v("outp_newMin"); o.newMode=($("outp_newMode")||{}).value||"beyond50"; o.fuPerDay=v("outp_fuPerDay");
-  o.fuMin=v("outp_fuMin"); o.home=($("outp_home")||{}).checked||false; o.roundsUnits=v("outp_roundsUnits");
-  st.g512 = { panel:v("g_panel"), weeks:v("g_weeks") };
+  ensureTS(activeTeam);
+  const st=teamState[activeTeam][active];
+  const h=st.lines.hosp,o=st.lines.outp;
+  h.staff=v("hosp_staff");h.newPerWk=v("hosp_newPerWk");h.fuShortWk=v("hosp_fuShortWk");
+  h.fuLongWk=v("hosp_fuLongWk");h.mrpPerWk=v("hosp_mrpPerWk");h.mrpMode=($("hosp_mrpK023")||{}).checked?"k023":"c882";h.roundsUnits=v("hosp_roundsUnits");
+  o.staff=v("outp_staff");o.clinNewWk=v("outp_clinNewWk");o.clinFuIpWk=v("outp_clinFuIpWk");o.clinFuVirtWk=v("outp_clinFuVirtWk");o.clinPhoneWk=v("outp_clinPhoneWk");
+  o.hvNewWk=v("outp_hvNewWk");o.hvFuWk=v("outp_hvFuWk");o.hspAdmWk=v("outp_hspAdmWk");o.hspFuWk=v("outp_hspFuWk");o.roundsUnits=v("outp_roundsUnits");
+  st.g512={panel:v("g_panel"),weeks:v("g_weeks")};
 }
-
 function buildTeamSelect(){
-  $("activeTeam").innerHTML = teams.map(t => "<option value='" + t.id + "'" + (t.id === activeTeam ? " selected" : "") + ">" + t.name + "</option>").join("");
+  $("activeTeam").innerHTML=teams.map(t=>"<option value='"+t.id+"'"+(t.id===activeTeam?" selected":"")+">"+t.name+"</option>").join("");
 }
 
-function units(minutes){ if (minutes <= 0) return 0; return Math.floor(minutes / 30) + (minutes % 30 >= 15 ? 1 : 0); }
-const fee = c => v("f_" + c);
+const fee=c=>v("f_"+c);
+// Visit builders
+const VT={
+  clinNew:()=>({name:"Clinic new consult",lines:[{c:"A945",q:1,a:fee("A945")},{c:"K023",q:1,a:fee("K023")}]}),
+  clinFuIp:()=>({name:"Clinic follow-up, in-person",lines:[{c:"K023",q:1,a:fee("K023")}]}),
+  clinFuVirt:()=>({name:"Clinic follow-up, virtual (K301)",lines:[{c:"K023",q:0.85,a:fee("K023")*0.85}]}),
+  clinPhone:()=>({name:"Clinic phone follow-up < 10 min",lines:[{c:"A102",q:1,a:fee("A102")}]}),
+  hvNew:()=>({name:"Home visit, new consult",lines:[{c:"A945",q:1,a:fee("A945")},{c:"K023",q:1,a:fee("K023")},{c:"B966",q:1,a:fee("B966")},{c:"B998",q:1,a:fee("B998")}]}),
+  hvFu:()=>({name:"Home visit, follow-up",lines:[{c:"K023",q:1,a:fee("K023")},{c:"B966",q:1,a:fee("B966")},{c:"B998",q:1,a:fee("B998")}]}),
+  hspAdm:()=>({name:"Hospice admission",lines:[{c:"A945",q:1,a:fee("A945")},{c:"K023",q:1,a:fee("K023")},{c:"B966",q:1,a:fee("B966")},{c:"B998",q:1,a:fee("B998")}]}),
+  hspFu:()=>({name:"Hospice follow-up",lines:[{c:"K023",q:1,a:fee("K023")}]}),
+  hospNew:()=>({name:"Inpatient new consult",lines:[{c:"A945",q:1,a:fee("A945")},{c:"K023",q:1,a:fee("K023")}]}),
+  hospFuShort:()=>({name:"Inpatient follow-up < 20 min",lines:[{c:"C882",q:1,a:fee("C882")}]}),
+  hospFuLong:()=>({name:"Inpatient follow-up \u2265 20 min",lines:[{c:"K023",q:1,a:fee("K023")}]}),
+  mrp:(mode)=>mode==="k023"?({name:"MRP / PCU patient, \u226520 min (K023)",lines:[{c:"K023",q:1,a:fee("K023")}]}):
+                            ({name:"MRP / PCU patient, <20 min (C882 + E083)",lines:[{c:"C882",q:1,a:fee("C882")},{c:"E083",q:1,a:fee("E083")}]})
+};
+const vtot=vt=>vt.lines.reduce((a,l)=>a+l.a,0);
 
-// visit builders return {lines:[{code,qty,amount}], total, minutes}
-function hospNew(h){
-  const lines = [{ code:"A945", qty:1, amount:fee("A945") }];
-  const k = units(h.newMin - 50);
-  if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
-  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:h.newMin };
-}
-function hospFu(h, isMRP){
-  // subsequent billed via K023 for the part beyond, plus E082 if MRP
-  const lines = [];
-  const k = units(h.fuMin);
-  if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
-  else lines.push({ code:"C882", qty:1, amount:fee("C882") });
-  if (isMRP){ lines.push({ code:"E082", qty:1, amount:fee("E082") }); }
-  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:h.fuMin };
-}
-function outpNew(o){
-  const lines = [];
-  if (o.newMode === "instead" && o.newMin > 20){
-    const k = units(o.newMin);
-    lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
-  } else if (o.newMode === "beyond50"){
-    lines.push({ code:"A945", qty:1, amount:fee("A945") });
-    const k = units(o.newMin - 50);
-    if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
-  } else {
-    lines.push({ code:"A945", qty:1, amount:fee("A945") });
-  }
-  if (o.home){ lines.push({ code:"B966", qty:1, amount:fee("B966") }); lines.push({ code:"B998", qty:1, amount:fee("B998") }); }
-  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:o.newMin };
-}
-function outpFu(o){
-  const lines = [];
-  const k = units(o.fuMin);
-  if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
-  else lines.push({ code:"A900", qty:1, amount:fee("A900") });
-  if (o.home){ lines.push({ code:"B966", qty:1, amount:fee("B966") }); lines.push({ code:"B998", qty:1, amount:fee("B998") }); }
-  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:o.fuMin };
-}
-
-function hospWeek(h){
-  const codes = {}; const add = (c,q,a)=>{ if(!codes[c])codes[c]={qty:0,amount:0}; codes[c].qty+=q; codes[c].amount+=a; };
-  const nNew = h.days * h.newPerDay;
-  const nFu = h.days * h.fuPerDay;
-  const mrpShare = Math.min(Math.max(h.mrpShare,0),100)/100;
-  const en = hospNew(h);
-  const efMRP = hospFu(h, true), efNon = hospFu(h, false);
-  for (const l of en.lines) add(l.code, l.qty*nNew, l.amount*nNew);
-  for (const l of efMRP.lines) add(l.code, l.qty*nFu*mrpShare, l.amount*nFu*mrpShare);
-  for (const l of efNon.lines) add(l.code, l.qty*nFu*(1-mrpShare), l.amount*nFu*(1-mrpShare));
-  add("K121", h.roundsUnits, h.roundsUnits*fee("K121"));
-  const revenue = en.total*nNew + efMRP.total*nFu*mrpShare + efNon.total*nFu*(1-mrpShare) + h.roundsUnits*fee("K121");
-  const contactHours = (en.minutes*nNew + h.fuMin*nFu)/60;
-  return { revenue, codes, hoursPerDay: h.days>0 ? contactHours/h.days : 0, en, efMRP, efNon, nNew, nFu, mrpShare };
-}
-function outpWeek(o){
-  const codes = {}; const add = (c,q,a)=>{ if(!codes[c])codes[c]={qty:0,amount:0}; codes[c].qty+=q; codes[c].amount+=a; };
-  const nNew = o.days * o.newPerDay, nFu = o.days * o.fuPerDay;
-  const en = outpNew(o), ef = outpFu(o);
-  for (const l of en.lines) add(l.code, l.qty*nNew, l.amount*nNew);
-  for (const l of ef.lines) add(l.code, l.qty*nFu, l.amount*nFu);
-  add("K700", o.roundsUnits, o.roundsUnits*fee("K700"));
-  const revenue = en.total*nNew + ef.total*nFu + o.roundsUnits*fee("K700");
-  const contactHours = (en.minutes*nNew + o.fuMin*nFu)/60;
-  return { revenue, codes, hoursPerDay: o.days>0 ? contactHours/o.days : 0, en, ef, nNew, nFu };
+function weekRevenue(lines,h,o){
+  const codes={};
+  const add=(c,q,a)=>{if(!codes[c])codes[c]={qty:0,amount:0};codes[c].qty+=q;codes[c].amount+=a;};
+  const acc=(vt,n)=>{for(const l of vt.lines)add(l.c,l.q*n,l.a*n);return vtot(vt)*n;};
+  // hosp
+  let hrev=0;
+  hrev+=acc(VT.hospNew(),h.newPerWk);
+  hrev+=acc(VT.hospFuShort(),h.fuShortWk);
+  hrev+=acc(VT.hospFuLong(),h.fuLongWk);
+  hrev+=acc(VT.mrp(h.mrpMode),h.mrpPerWk);
+  add("K121",h.roundsUnits,h.roundsUnits*fee("K121")); hrev+=h.roundsUnits*fee("K121");
+  const hVis=h.newPerWk+h.fuShortWk+h.fuLongWk+h.mrpPerWk;
+  // outp
+  let orev=0;
+  orev+=acc(VT.clinNew(),o.clinNewWk);
+  orev+=acc(VT.clinFuIp(),o.clinFuIpWk);
+  orev+=acc(VT.clinFuVirt(),o.clinFuVirtWk);
+  orev+=acc(VT.clinPhone(),o.clinPhoneWk||0);
+  orev+=acc(VT.hvNew(),o.hvNewWk);
+  orev+=acc(VT.hvFu(),o.hvFuWk);
+  orev+=acc(VT.hspAdm(),o.hspAdmWk);
+  orev+=acc(VT.hspFu(),o.hspFuWk);
+  add("K700",o.roundsUnits,o.roundsUnits*fee("K700")); orev+=o.roundsUnits*fee("K700");
+  const oVis=o.clinNewWk+o.clinFuIpWk+o.clinFuVirtWk+(o.clinPhoneWk||0)+o.hvNewWk+o.hvFuWk+o.hspAdmWk+o.hspFuWk;
+  return {codes,hrev,orev,hVis,oVis};
 }
 
-function computeTeamScenario(tid, k){
-  ensureTeamState(tid);
-  const st = teamState[tid][k];
-  const t = teams.find(x => x.id === tid);
-  const teamSize = Math.max(t ? t.mds : 1, 1);
-  const clinWeeks = v("clinweeks"), block = Math.max(v("block"),1);
-  const hw = hospWeek(st.lines.hosp), ow = outpWeek(st.lines.outp);
-  const hWeeksPerMD = (st.lines.hosp.staff/teamSize)*clinWeeks;
-  const oWeeksPerMD = (st.lines.outp.staff/teamSize)*clinWeeks;
-  const rows = [
-    { key:"hosp", meta:LINE_META.hosp, rw:hw, staff:st.lines.hosp.staff, weeksPerMD:hWeeksPerMD },
-    { key:"outp", meta:LINE_META.outp, rw:ow, staff:st.lines.outp.staff, weeksPerMD:oWeeksPerMD }
-  ];
-  const annualFFS = hw.revenue*hWeeksPerMD + ow.revenue*oWeeksPerMD;
-  const gWeeks = Math.min(Math.max(st.g512.weeks,0),52);
-  const gClaims = st.g512.panel*gWeeks;
-  const gAmount = gClaims*fee("G512");
-  const cpoc = v("cpoc"), bboc = v("bboc"), other = v("stipend")+v("adhoc");
-  const total = annualFFS + gAmount + cpoc + bboc + other;
-  const demandWeeksPerTeam = (st.lines.hosp.staff + st.lines.outp.staff)*52;
-  const supplyWeeksPerTeam = teamSize*clinWeeks;
-  return { rows, annualFFS, gAmount, gClaims, cpoc, bboc, other, total, demandWeeksPerTeam, supplyWeeksPerTeam, clinWeeks, block, teamSize };
+function compute(tid,k){
+  ensureTS(tid);
+  const st=teamState[tid][k];
+  const t=teams.find(x=>x.id===tid);
+  const teamFTE=Math.max(t?t.mds:1,1); // treating headcount as proxy for FTE capacity at team level
+  const clinWeeks=v("clinweeks"), block=Math.max(v("block"),1);
+  const h=st.lines.hosp,o=st.lines.outp;
+  const wr=weekRevenue(h,o,{});
+  const wk2=weekRevenue(h,o,h); // recompute properly
+  const wr2=weekRevenue2(h,o);
+  const hWk=(h.staff/teamFTE)*clinWeeks;
+  const oWk=(o.staff/teamFTE)*clinWeeks;
+  const ffsH=wr2.hrev*hWk, ffsO=wr2.orev*oWk;
+  const annualFFS=ffsH+ffsO;
+  const gWeeks=Math.min(Math.max(st.g512.weeks,0),52);
+  const gClaims=st.g512.panel*gWeeks;
+  const gAmount=gClaims*fee("G512");
+  const cpoc=v("cpoc"),bboc=v("bboc"),other=v("stipend")+v("adhoc");
+  const total1=annualFFS+gAmount+cpoc+bboc+other;
+  return {h,o,wr:wr2,hWk,oWk,ffsH,ffsO,annualFFS,gAmount,gClaims,cpoc,bboc,other,total1,clinWeeks,block,teamFTE,
+    demandFTE:(h.staff+o.staff)*52, supplyFTE:teamFTE*clinWeeks};
+}
+function weekRevenue2(h,o){
+  const codes={};
+  const add=(c,q,a)=>{if(!codes[c])codes[c]={qty:0,amount:0};codes[c].qty+=q;codes[c].amount+=a;};
+  const acc=(vt,n)=>{for(const l of vt.lines)add(l.c,l.q*n,l.a*n);return vtot(vt)*n;};
+  let hrev=0;
+  hrev+=acc(VT.hospNew(),h.newPerWk);
+  hrev+=acc(VT.hospFuShort(),h.fuShortWk);
+  hrev+=acc(VT.hospFuLong(),h.fuLongWk);
+  hrev+=acc(VT.mrp(h.mrpMode),h.mrpPerWk);
+  add("K121",h.roundsUnits,h.roundsUnits*fee("K121")); hrev+=h.roundsUnits*fee("K121");
+  const hVis=h.newPerWk+h.fuShortWk+h.fuLongWk+h.mrpPerWk;
+  let orev=0;
+  orev+=acc(VT.clinNew(),o.clinNewWk);
+  orev+=acc(VT.clinFuIp(),o.clinFuIpWk);
+  orev+=acc(VT.clinFuVirt(),o.clinFuVirtWk);
+  orev+=acc(VT.clinPhone(),o.clinPhoneWk||0);
+  orev+=acc(VT.hvNew(),o.hvNewWk);
+  orev+=acc(VT.hvFu(),o.hvFuWk);
+  orev+=acc(VT.hspAdm(),o.hspAdmWk);
+  orev+=acc(VT.hspFu(),o.hspFuWk);
+  add("K700",o.roundsUnits,o.roundsUnits*fee("K700")); orev+=o.roundsUnits*fee("K700");
+  const oVis=o.clinNewWk+o.clinFuIpWk+o.clinFuVirtWk+(o.clinPhoneWk||0)+o.hvNewWk+o.hvFuWk+o.hspAdmWk+o.hspFuWk;
+  return {codes,hrev,orev,hVis,oVis};
 }
 
-function renderFteTable(){
-  let head = 0, weighted = 0;
-  let html = "";
-  fteBands.forEach((b, i) => {
-    const contrib = (b.pct/100)*b.count;
-    head += b.count; weighted += contrib;
-    html += "<tr data-i='" + i + "'><td>Band " + (i+1) + "</td>" +
-      "<td><input data-f='pct' type='number' step='5' value='" + b.pct + "'></td>" +
-      "<td><input data-f='count' type='number' step='1' value='" + b.count + "'></td>" +
-      "<td class='n'>" + contrib.toFixed(2) + "</td></tr>";
+function renderFTE(){
+  let head=0,weighted=0,html="";
+  fteBands.forEach((b,i)=>{
+    const c=(b.pct/100)*b.count, days=(b.pct/100)*Math.max(v("fteDays"),1);
+    head+=b.count; weighted+=c;
+    html+="<tr data-i='"+i+"'><td>Band "+(i+1)+"</td><td><input data-f='pct' type='number' step='5' value='"+b.pct+"'></td><td><input data-f='count' type='number' step='1' value='"+b.count+"'></td><td class='n'>"+days.toFixed(1)+"</td><td class='n'>"+c.toFixed(2)+"</td></tr>";
   });
-  $("fteBody").innerHTML = html;
-  $("fteHeadcount").textContent = head;
-  $("fteWeighted").textContent = weighted.toFixed(2);
-  document.querySelectorAll("#fteBody input").forEach(el => el.addEventListener("input", e => {
-    const i = +e.target.closest("tr").dataset.i;
-    fteBands[i][e.target.dataset.f] = parseFloat(e.target.value) || 0;
-    renderFteTable(); render();
+  $("fteBody").innerHTML=html;
+  $("fteHeadcount").textContent=head; $("fteWeighted").textContent=weighted.toFixed(2);
+  document.querySelectorAll("#fteBody input").forEach(el=>el.addEventListener("input",e=>{
+    const i=+e.target.closest("tr").dataset.i;
+    fteBands[i][e.target.dataset.f]=parseFloat(e.target.value)||0;
+    renderFTE();render();
   }));
-  return { head, weighted };
+  return {head,weighted};
 }
-
-function renderTeamsTable(){
-  let allocMD = 0, allocPt = 0, allocFTE = 0;
-  const perFTE = Math.max(v("patientsPerFTE"),1);
-  let html = "";
+function renderTeams(){
+  let amd=0,apt=0,afte=0; const perFTE=Math.max(v("patientsPerFTE"),1); let html="";
   for (const t of teams){
-    allocMD += t.mds; allocPt += t.patients;
-    const fteNeeded = t.patients/perFTE; allocFTE += fteNeeded;
-    const ppmd = t.mds>0 ? t.patients/t.mds : 0;
-    html += "<tr data-id='" + t.id + "'>" +
-      "<td><input class='name' data-f='name' value='" + t.name + "'></td>" +
-      "<td><input data-f='mds' type='number' step='1' value='" + t.mds + "'></td>" +
-      "<td><input data-f='patients' type='number' step='5' value='" + t.patients + "'></td>" +
-      "<td class='n'>" + ppmd.toFixed(1) + "</td><td class='n'>" + fteNeeded.toFixed(1) + "</td>" +
-      "<td><button class='del' data-id='" + t.id + "' title='Remove team'>\u00d7</button></td></tr>";
+    amd+=t.mds;apt+=t.patients;const f=t.patients/perFTE;afte+=f;const p=t.mds>0?t.patients/t.mds:0;
+    html+="<tr data-id='"+t.id+"'><td><input class='name' data-f='name' value='"+t.name+"'></td><td><input data-f='mds' type='number' step='1' value='"+t.mds+"'></td><td><input data-f='patients' type='number' step='5' value='"+t.patients+"'></td><td class='n'>"+p.toFixed(1)+"</td><td class='n'>"+f.toFixed(1)+"</td><td><button class='del' data-id='"+t.id+"' title='Remove'>\u00d7</button></td></tr>";
   }
-  $("teamBody").innerHTML = html;
-  $("tAllocMD").textContent = allocMD; $("tAllocPt").textContent = allocPt;
-  $("tAllocPPMD").textContent = (allocMD>0 ? allocPt/allocMD : 0).toFixed(1);
-  $("tAllocFTE").textContent = allocFTE.toFixed(1);
-  document.querySelectorAll("#teamBody input").forEach(el => el.addEventListener("input", e => {
-    const tr = e.target.closest("tr"); const t = teams.find(x => x.id === tr.dataset.id);
-    const f = e.target.dataset.f;
-    t[f] = f === "name" ? e.target.value : (parseFloat(e.target.value)||0);
-    buildTeamSelect(); renderTeamsTable(); render();
+  $("teamBody").innerHTML=html; $("tAllocMD").textContent=amd; $("tAllocPt").textContent=apt;
+  $("tAllocPPMD").textContent=(amd>0?apt/amd:0).toFixed(1); $("tAllocFTE").textContent=afte.toFixed(1);
+  document.querySelectorAll("#teamBody input").forEach(el=>el.addEventListener("input",e=>{
+    const tr=e.target.closest("tr"),t=teams.find(x=>x.id===tr.dataset.id),f=e.target.dataset.f;
+    t[f]=f==="name"?e.target.value:(parseFloat(e.target.value)||0);
+    buildTeamSelect();renderTeams();render();
   }));
-  document.querySelectorAll("#teamBody .del").forEach(b => b.addEventListener("click", () => {
-    if (teams.length <= 1) return;
-    teams = teams.filter(x => x.id !== b.dataset.id);
-    if (activeTeam === b.dataset.id) activeTeam = teams[0].id;
-    buildTeamSelect(); renderTeamsTable(); loadDOM(); render();
+  document.querySelectorAll("#teamBody .del").forEach(b=>b.addEventListener("click",()=>{
+    if(teams.length<=1)return;teams=teams.filter(x=>x.id!==b.dataset.id);
+    if(activeTeam===b.dataset.id)activeTeam=teams[0].id;
+    buildTeamSelect();renderTeams();loadDOM();render();
   }));
-  const progMD = v("totalMDs"), progPt = v("totalPatients");
-  const msg = $("allocMsg");
-  const dMD = allocMD - progMD, dPt = allocPt - progPt;
-  if (Math.abs(dMD)<0.5 && Math.abs(dPt)<0.5){ msg.className="allocok"; msg.textContent="Allocation matches the program totals exactly."; }
-  else {
-    const bits = [];
-    if (Math.abs(dMD)>=0.5) bits.push((dMD>0?"over-allocates ":"leaves ")+Math.abs(dMD)+" physician"+(Math.abs(dMD)===1?"":"s")+(dMD>0?"":" unassigned"));
-    if (Math.abs(dPt)>=0.5) bits.push((dPt>0?"over-allocates ":"leaves ")+Math.abs(dPt)+" patient"+(Math.abs(dPt)===1?"":"s")+(dPt>0?"":" unassigned"));
-    msg.className="allocwarn"; msg.textContent="Team allocation "+bits.join(" and ")+" versus the program totals above.";
-  }
-  return { allocMD };
+  const pm=v("totalMDs"),pp=v("totalPatients"),dm=amd-pm,dp=apt-pp,msg=$("allocMsg");
+  if(Math.abs(dm)<0.5&&Math.abs(dp)<0.5){msg.className="allocok";msg.textContent="Allocation matches the program totals exactly.";}
+  else{const b=[];
+    if(Math.abs(dm)>=0.5)b.push((dm>0?"over-allocates ":"leaves ")+Math.abs(dm)+" physician"+(Math.abs(dm)===1?"":"s")+(dm>0?"":" unassigned"));
+    if(Math.abs(dp)>=0.5)b.push((dp>0?"over-allocates ":"leaves ")+Math.abs(dp)+" patient"+(Math.abs(dp)===1?"":"s")+(dp>0?"":" unassigned"));
+    msg.className="allocwarn";msg.textContent="Team allocation "+b.join(" and ")+" versus program totals above.";}
 }
 
 function render(){
   saveDOM();
-  const fte = renderFteTable();
-  renderTeamsTable();
+  const ft=renderFTE(); renderTeams();
+  const totalP=v("totalPatients"),perFTE=Math.max(v("patientsPerFTE"),1),totalMDs=v("totalMDs");
+  const fteReq=totalP/perFTE,fteSup=ft.weighted;
+  $("outFTE").textContent=fteReq.toFixed(1);
+  const se=$("outFTEsupply");se.textContent=fteSup.toFixed(1);se.className="v num"+(fteSup<fteReq?" bad":"");
+  $("outHead").textContent=ft.head;
+  $("outPPMD").textContent=totalMDs>0?(totalP/totalMDs).toFixed(1):"\u2014";
+  $("progNote").innerHTML=totalP+" patients at "+perFTE+" per FTE need <strong>"+fteReq.toFixed(1)+" FTE</strong>. Your FTE bands supply <strong>"+fteSup.toFixed(1)+" FTE</strong> from "+ft.head+" physicians"+(fteSup<fteReq?", a shortfall of "+(fteReq-fteSup).toFixed(1)+" FTE.":", covering the panel with "+(fteSup-fteReq).toFixed(1)+" FTE to spare for leave.")+" Allocate physicians and patients across teams by area.";
 
-  const totalPatients = v("totalPatients"), perFTE = Math.max(v("patientsPerFTE"),1);
-  const totalMDs = v("totalMDs");
-  const fteReq = totalPatients/perFTE;
-  const fteSupply = fte.weighted;
-  const mdsNeeded = fteBands.length && fteReq>0 ? Math.ceil(fteReq / (fte.head>0 ? fte.weighted/fte.head : 0.85)) : 0;
-  $("outFTE").textContent = fteReq.toFixed(1);
-  const supEl = $("outFTEsupply"); supEl.textContent = fteSupply.toFixed(1);
-  supEl.className = "v num" + (fteSupply < fteReq ? " bad" : "");
-  $("outMDsNeeded").textContent = mdsNeeded || "\u2014";
-  $("outPPMD").textContent = totalMDs>0 ? (totalPatients/totalMDs).toFixed(1) : "\u2014";
-  $("progNote").innerHTML = totalPatients + " patients at " + perFTE + " per FTE need <strong>" + fteReq.toFixed(1) +
-    " FTE</strong>. Your FTE bands supply <strong>" + fteSupply.toFixed(1) + " FTE</strong> from " + fte.head + " physicians" +
-    (fteSupply < fteReq ? ", a shortfall of " + (fteReq-fteSupply).toFixed(1) + " FTE." :
-      ", covering the panel with " + (fteSupply-fteReq).toFixed(1) + " FTE to spare for leave.") +
-    " Allocate physicians and patients across teams by area \u2014 busier areas carry more of both.";
+  const clinWeeks=v("clinweeks"),block=Math.max(v("block"),1);
+  const daysPerWeek=Math.max(v("fteDays"),1)*fte;
+  const daysPerYear=clinWeeks*daysPerWeek;
+  $("sliderVal").textContent=fmtfte(fte);
+  $("sliderOut").innerHTML="At <strong>"+fmtfte(fte)+" FTE</strong>: "+daysPerWeek.toFixed(1)+" clinical days/week, "+daysPerYear.toFixed(0)+" clinical days/year, "+Math.round(clinWeeks*fte)+" clinical weeks.";
 
-  const results = {};
-  for (const k of ORDER) results[k] = computeTeamScenario(activeTeam, k);
-  const maxTotal = Math.max(...ORDER.map(k => results[k].total), 1);
-  let bh = "";
-  for (const k of ORDER){
-    const r = results[k], w = (r.total/maxTotal)*100, isA = k===active;
-    bh += "<div class='barrow'><span class='name'" + (isA?" style='color:var(--ink)'":"") + ">" + SCEN_LABEL[k].split(" ")[0] +
-      "</span><div class='track'><div class='fill' style='width:"+w+"%;background:"+(isA?"#2F6B5C":"#9AA5AE")+"'></div></div><span class='total num'>"+money(r.total)+"</span></div>";
+  const results={};
+  for (const k of ORDER) results[k]=compute(activeTeam,k);
+  const R=results[active];
+
+  // Key stats
+  $("keyStats").innerHTML=
+    "<div class='statbox'><div class='sl'>Clinical weeks</div><div class='sv num'>"+Math.round(clinWeeks*fte)+"</div></div>"+
+    "<div class='statbox'><div class='sl'>Clinical days / week</div><div class='sv num'>"+daysPerWeek.toFixed(1)+"</div></div>"+
+    "<div class='statbox'><div class='sl'>Clinical days / year</div><div class='sv num'>"+daysPerYear.toFixed(0)+"</div></div>";
+
+  const maxT=Math.max(...ORDER.map(k=>results[k].total1*fte),1);
+  let bh="";
+  for (const k of ORDER){const tot=results[k].total1*fte,w=(tot/maxT)*100,iA=k===active;
+    bh+="<div class='barrow'><span class='name'"+(iA?" style='color:var(--ink)'":"")+">"+SCEN_LABEL[k].split(" ")[0]+"</span><div class='track'><div class='fill' style='width:"+w+"%;background:"+(iA?"#2F6B5C":"#9AA5AE")+"'></div></div><span class='total num'>"+money(tot)+"</span></div>";}
+  $("scenarioBars").innerHTML=bh;
+
+  const tO=teams.find(x=>x.id===activeTeam);
+  // Sync g_panel to active team's patients-per-MD so it stays linked as teams change
+  if(tO && tO.mds > 0){
+    const livePPMD = Math.round(tO.patients / tO.mds);
+    const gp=$("g_panel");
+    if(gp && !gp.dataset.manual) gp.value = livePPMD;
   }
-  $("scenarioBars").innerHTML = bh;
+  $("coverTeamName").textContent=tO?tO.name:"";
+  $("coverScenarioName").textContent=SCEN_LABEL[active];
+  const gap=R.supplyFTE-R.demandFTE;
+  const cn=$("coverNote");cn.className="callout"+(gap<0?" risk":"");
+  cn.innerHTML="This team of "+R.teamFTE+" demands <strong>"+Math.round(R.demandFTE)+" FTE-weeks</strong> a year; at "+R.clinWeeks+" clinical weeks each it supplies <strong>"+Math.round(R.supplyFTE)+"</strong>. "+(gap<0?"Shortfall of "+Math.round(-gap)+" FTE-weeks \u2014 needs float support or a lighter line commitment.":Math.round(gap)+" FTE-weeks of slack for leave.");
 
-  const R = results[active];
-  const tObj = teams.find(x => x.id === activeTeam);
-  $("coverTeamName").textContent = tObj ? tObj.name : "";
-  $("coverScenarioName").textContent = SCEN_LABEL[active];
-  const gap = R.supplyWeeksPerTeam - R.demandWeeksPerTeam;
-  const cn = $("coverNote");
-  cn.className = "callout" + (gap<0?" risk":"");
-  cn.innerHTML = "This team of " + R.teamSize + " demands <strong>" + Math.round(R.demandWeeksPerTeam) +
-    " physician-weeks</strong> a year; at " + R.clinWeeks + " clinical weeks each it supplies <strong>" + Math.round(R.supplyWeeksPerTeam) + "</strong>. " +
-    (gap<0 ? "Shortfall of " + Math.round(-gap) + " weeks \u2014 needs float support or a lighter line commitment."
-           : Math.round(gap) + " weeks of slack for vacation, illness and conference leave.");
+  let rh="";
+  const lines=[{name:"Inpatient consults and PCU",staff:R.h.staff,wk:R.hWk},{name:"Outpatient: clinic, home visits, hospice",staff:R.o.staff,wk:R.oWk}];
+  for (const x of lines) rh+="<tr><td>"+x.name+"</td><td class='n'>"+x.staff.toFixed(1)+"</td><td class='n'>"+x.wk.toFixed(1)+"</td><td class='n'>"+(x.wk/block).toFixed(1)+"</td></tr>";
+  $("rosterBody").innerHTML=rh;
+  $("rosterWarn").hidden=gap>=0;
+  if(gap<0)$("rosterWarn").textContent="Roster demands more FTE-weeks than this team can supply.";
 
-  let rh = "";
-  for (const x of R.rows) rh += "<tr><td>"+x.meta.name+"</td><td class='n'>"+x.staff.toFixed(1)+"</td><td class='n'>"+x.weeksPerMD.toFixed(1)+"</td><td class='n'>"+(x.weeksPerMD/R.block).toFixed(1)+"</td></tr>";
-  $("rosterBody").innerHTML = rh;
-  $("rosterWarn").hidden = gap>=0;
-  if (gap<0) $("rosterWarn").textContent = "Roster demands more weeks than this team can supply as configured.";
+  // Rotation description: 1 block inpatient + 1 block outpatient = one full rotation
+  const rotDesc="1 inpatient block + 1 outpatient block ("+(block*2)+" weeks total)";
+  $("rotDesc").textContent=rotDesc;
 
-  $("blockLenNote").textContent = R.block;
-  let prh = "";
-  for (const x of R.rows){
-    const perBlock = x.rw.revenue*R.block, rot = x.weeksPerMD/R.block;
-    prh += "<tr><td>"+x.meta.name+"</td><td class='n'>"+money(x.rw.revenue)+"</td><td class='n'>"+money(perBlock)+"</td><td class='n'>"+rot.toFixed(1)+"</td><td class='n'>"+money(x.rw.revenue*x.weeksPerMD)+"</td></tr>";
+  let prh="";
+  for (const x of [{name:"Inpatient",rev:R.wr.hrev,wk:R.hWk},{name:"Outpatient",rev:R.wr.orev,wk:R.oWk}]){
+    const perBlock=x.rev*block*fte,rot=x.wk/block;
+    prh+="<tr><td>"+x.name+"</td><td class='n'>"+money(x.rev*fte)+"</td><td class='n'>"+money(perBlock)+"</td><td class='n'>"+rot.toFixed(1)+"</td><td class='n'>"+money(x.rev*x.wk*fte)+"</td></tr>";
   }
-  $("perRotationBody").innerHTML = prh;
+  $("perRotationBody").innerHTML=prh;
 
-  let ih = "";
-  for (const x of R.rows) ih += "<tr><td>"+x.meta.name+"</td><td class='n'>"+x.weeksPerMD.toFixed(1)+"</td><td class='n'>"+money(x.rw.revenue*x.weeksPerMD)+"</td></tr>";
-  ih += "<tr><td>G512 case management</td><td class='n'>\u2014</td><td class='n'>"+money(R.gAmount)+"</td></tr>";
-  ih += "<tr><td>CPOC and BBOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.cpoc+R.bboc)+"</td></tr>";
-  ih += "<tr><td>On-call, stipends and ad hoc</td><td class='n'>\u2014</td><td class='n'>"+money(R.other)+"</td></tr>";
-  ih += "<tr class='sum'><td>Total</td><td class='n'>"+R.rows.reduce((a,x)=>a+x.weeksPerMD,0).toFixed(1)+"</td><td class='n'>"+money(R.total)+"</td></tr>";
-  $("incomeBody").innerHTML = ih;
+  const fl=fmtfte(fte);
+  $("incFTE").textContent=fl;$("incFTE2").textContent=fl;$("volFTE").textContent=fl;
+  const incRow=(n,a)=>"<tr><td>"+n+"</td><td class='n'>"+money(a)+"</td><td class='n'>"+money(a*fte)+"</td></tr>";
+  let ih="";
+  ih+=incRow("Inpatient FFS",R.ffsH);
+  ih+=incRow("Outpatient FFS",R.ffsO);
+  ih+=incRow("G512 case management",R.gAmount);
+  ih+=incRow("CPOC and BBOC",R.cpoc+R.bboc);
+  ih+=incRow("On-call, stipends and ad hoc",R.other);
+  ih+="<tr class='sum'><td>Total</td><td class='n'>"+money(R.total1)+"</td><td class='n'>"+money(R.total1*fte)+"</td></tr>";
+  $("incomeBody").innerHTML=ih;
 
-  // Per visit-type itemization
-  const st = teamState[activeTeam][active];
-  const visits = [
-    { name:"Inpatient — new consult", ev:hospNew(st.lines.hosp) },
-    { name:"Inpatient — subsequent (MRP)", ev:hospFu(st.lines.hosp, true) },
-    { name:"Inpatient — subsequent (non-MRP)", ev:hospFu(st.lines.hosp, false) },
-    { name:"Outpatient — new consult", ev:outpNew(st.lines.outp) },
-    { name:"Outpatient — follow-up", ev:outpFu(st.lines.outp) }
+  // Visit type revenue table
+  const st=teamState[activeTeam][active];
+  const visits=[
+    VT.hospNew(),VT.hospFuShort(),VT.hospFuLong(),VT.mrp(st.lines.hosp.mrpMode),
+    VT.clinNew(),VT.clinFuIp(),VT.clinFuVirt(),VT.clinPhone(),VT.hvNew(),VT.hvFu(),VT.hspAdm(),VT.hspFu()
   ];
-  let it = "";
+  let it="";
   for (const vt of visits){
-    it += "<tr class='group'><td>"+vt.name+"</td><td class='n'>"+vt.ev.minutes+" min</td><td></td></tr>";
-    for (const l of vt.ev.lines){
-      let label = l.code;
-      if (l.code === "K023") label = "K023 \u00d7 " + l.qty;
-      if (l.code === "E082") label = "E082 (MRP premium)";
-      it += "<tr><td class='code'>"+label+"</td><td></td><td class='n'>"+money2(l.amount)+"</td></tr>";
+    it+="<tr class='group'><td>"+vt.name+"</td><td></td><td></td></tr>";
+    for (const l of vt.lines){
+      let label=l.c;
+      if(l.c==="E083")label="E083 (MRP premium)";
+      if(l.c==="K023"&&l.q<1)label="K023 \u00d7 85% (K301 virtual)";
+      it+="<tr><td class='code'>"+label+"</td><td></td><td class='n'>"+money2(l.a)+"</td></tr>";
     }
-    it += "<tr class='encsum'><td>Per visit</td><td></td><td class='n'>"+money2(vt.ev.total)+"</td></tr>";
+    it+="<tr class='encsum'><td>Per visit</td><td></td><td class='n'>"+money2(vtot(vt))+"</td></tr>";
   }
-  $("itemBody").innerHTML = it;
+  $("itemBody").innerHTML=it;
 
-  const codeTotals = {};
-  const addc = (c,q,a)=>{ if(!codeTotals[c])codeTotals[c]={qty:0,amount:0}; codeTotals[c].qty+=q; codeTotals[c].amount+=a; };
-  for (const x of R.rows) for (const c in x.rw.codes) addc(c, x.rw.codes[c].qty*x.weeksPerMD, x.rw.codes[c].amount*x.weeksPerMD);
-  addc("G512", R.gClaims, R.gAmount);
-  const grandTotal = R.annualFFS + R.gAmount + R.cpoc + R.bboc;
-  const order = ["A945","C882","A900","K023","B966","B998","E082","K121","K700","G512"];
-  let cb = "";
-  for (const code of order){
-    const d = codeTotals[code];
-    if (!d || d.amount===0) continue;
-    cb += "<tr><td class='n' style='color:var(--ink)'>"+code+"</td><td class='n'>"+Math.round(d.qty).toLocaleString("en-CA")+"</td><td class='n'>"+money(d.amount)+"</td><td class='n'>"+(d.amount/grandTotal*100).toFixed(1)+"%</td></tr>";
-  }
-  cb += "<tr><td class='n' style='color:var(--ink)'>CPOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.cpoc)+"</td><td class='n'>"+(R.cpoc/grandTotal*100).toFixed(1)+"%</td></tr>";
-  cb += "<tr><td class='n' style='color:var(--ink)'>BBOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.bboc)+"</td><td class='n'>"+(R.bboc/grandTotal*100).toFixed(1)+"%</td></tr>";
-  cb += "<tr class='sum'><td>FFS + G512 + on-call programs</td><td></td><td class='n'>"+money(grandTotal)+"</td><td class='n'>100%</td></tr>";
-  $("codeBody").innerHTML = cb;
+  // Code totals at FTE
+  const ct={};
+  const addc=(c,q,a)=>{if(!ct[c])ct[c]={qty:0,amount:0};ct[c].qty+=q;ct[c].amount+=a;};
+  for (const c in R.wr.codes) addc(c,R.wr.codes[c].qty*(R.hWk+R.oWk)*fte,R.wr.codes[c].amount*(R.hWk+R.oWk)*fte);
+  addc("G512",R.gClaims*fte,R.gAmount*fte);
+  const grand=(R.annualFFS+R.gAmount+R.cpoc+R.bboc)*fte;
+  const corder=["A945","C882","A102","A900","K023","B966","B998","E083","K121","K700","G512"];
+  let cb="";
+  for (const c of corder){const d=ct[c];if(!d||d.amount===0)continue;
+    cb+="<tr><td class='n' style='color:var(--ink)'>"+c+"</td><td class='n'>"+Math.round(d.qty).toLocaleString("en-CA")+"</td><td class='n'>"+money(d.amount)+"</td><td class='n'>"+(d.amount/grand*100).toFixed(1)+"%</td></tr>";}
+  cb+="<tr><td class='n' style='color:var(--ink)'>CPOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.cpoc*fte)+"</td><td class='n'>"+(R.cpoc*fte/grand*100).toFixed(1)+"%</td></tr>";
+  cb+="<tr><td class='n' style='color:var(--ink)'>BBOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.bboc*fte)+"</td><td class='n'>"+(R.bboc*fte/grand*100).toFixed(1)+"%</td></tr>";
+  cb+="<tr class='sum'><td>FFS + G512 + on-call programs</td><td></td><td class='n'>"+money(grand)+"</td><td class='n'>100%</td></tr>";
+  $("codeBody").innerHTML=cb;
 
-  let flagged = false;
-  const parts = R.rows.filter(x => x.rw.hoursPerDay>0).map(x => {
-    if (x.rw.hoursPerDay>6.5) flagged = true;
-    return (x.key==="hosp"?"inpatient":"outpatient") + " " + x.rw.hoursPerDay.toFixed(1) + " h";
-  });
-  const hn = $("hoursNote");
-  hn.className = "callout" + (flagged?" risk":"");
-  hn.innerHTML = "Direct patient contact per clinical day: <strong>"+parts.join(", ")+"</strong>. " +
-    (flagged ? "At least one line exceeds six and a half hours face to face before charting, travel, family meetings or phone work. That line is probably not achievable as set."
-             : "Each line leaves room for charting, family meetings, travel and phone work inside a normal day.");
+  // Day fit
+  const fteDaysVal=Math.max(v("fteDays"),1);
+  const hpd=(R.wr.hVis||0)/fteDaysVal, opd=(R.wr.oVis||0)/fteDaysVal;
+  const flag=hpd>14||opd>14;
+  $("hoursNote").className="callout"+(flag?" risk":"");
+  $("hoursNote").innerHTML="At 1.0 FTE ("+fteDaysVal+"-day week): inpatient <strong>"+hpd.toFixed(1)+" visits / day</strong>, outpatient <strong>"+opd.toFixed(1)+" visits / day</strong>. "+(flag?"That volume is high for palliative visit lengths once charting, family meetings, travel and phone work are counted \u2014 sanity-check against real schedules.":"That is a plausible palliative load leaving room for charting, family meetings, travel and phone work.");
 }
 
-$("addTeam").addEventListener("click", () => {
-  const id = "t" + (teamSeq++);
-  teams.push({ id, name:"Team " + teams.length, mds:4, patients:80 });
-  buildTeamSelect(); renderTeamsTable(); render();
+$("fteSlider").addEventListener("input",e=>{fte=parseFloat(e.target.value);render();});
+document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"||e.target.tagName==="SELECT"||e.target.tagName==="TEXTAREA")e.stopPropagation();},true);
+// E083 = 30% of C882, auto-calculated
+function syncE083(){ const el=$("f_E083"); if(el) el.value=(v("f_C882")*0.30).toFixed(2); }
+$("f_C882") && document.getElementById("f_C882").addEventListener("input", ()=>{ syncE083(); render(); });
+$("addTeam").addEventListener("click",()=>{
+  const id="t"+(teamSeq++);teams.push({id,name:"Team "+teams.length,mds:4,patients:80});
+  buildTeamSelect();renderTeams();render();
 });
-$("activeTeam").addEventListener("change", e => { saveDOM(); activeTeam = e.target.value; loadDOM(); render(); });
-
-buildTabs();
-buildRoles();
-buildTeamSelect();
-loadDOM();
-document.querySelectorAll(".proinputs input, .panel.controls > .field input, details.feecard input").forEach(el => el.addEventListener("input", render));
+$("activeTeam").addEventListener("change",e=>{saveDOM();activeTeam=e.target.value;const gp=$("g_panel");if(gp)delete gp.dataset.manual;loadDOM();render();});
+buildTabs();buildRoles();buildTeamSelect();loadDOM();syncE083();
+document.querySelectorAll(".proinputs input,.panel.controls > .field input,details.feecard input").forEach(el=>el.addEventListener("input",render));
 render();
 </script>
 </body>
