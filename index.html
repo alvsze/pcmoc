@@ -12,7 +12,7 @@
     --ink:#16202B; --ink-soft:#4A5560; --ink-faint:#7C8792;
     --paper:#F1F3F0; --card:#FFFFFF; --rule:#D9DCD6; --rule-strong:#BFC4BC;
     --next:#2F6B5C; --loss:#A93F35; --focus:#2F6B5C;
-    --hosp:#3F5F7A; --comm:#2F6B5C; --hspc:#7A5A86; --clin:#7A9A4E;
+    --hosp:#3F5F7A; --outp:#2F6B5C;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -50,6 +50,19 @@
   .outstats .stat .v.bad{color:var(--loss)}
   .progNote{grid-column:1 / -1;font-size:12.5px;color:var(--ink-soft);max-width:94ch;line-height:1.6;margin-top:2px}
 
+  .fteband{grid-column:1 / -1;margin-top:4px}
+  .fteband h3{margin:0 0 3px;font-size:13px;font-weight:600;color:var(--ink)}
+  .fteband p.h{margin:0 0 8px;font-size:12px;color:var(--ink-faint)}
+  table.fte{width:100%;max-width:560px;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--rule)}
+  table.fte th{text-align:right;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--rule-strong)}
+  table.fte th:first-child{text-align:left}
+  table.fte td{padding:5px 10px;text-align:right;border-bottom:1px solid var(--rule)}
+  table.fte td:first-child{text-align:left;color:var(--ink-soft)}
+  table.fte input{width:70px;padding:4px 6px;border:1px solid var(--rule-strong);border-radius:3px;background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink)}
+  table.fte input:focus{outline:2px solid var(--focus);outline-offset:1px}
+  table.fte td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+  table.fte tr.totals td{font-weight:600;border-bottom:none;border-top:2px solid var(--ink);color:var(--ink);padding-top:8px}
+
   .teambuilder{grid-column:1 / -1;margin-top:6px}
   .teambuilder h3{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--ink)}
   table.teams{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--rule)}
@@ -63,19 +76,16 @@
   table.teams input.name{width:120px;text-align:left;font-family:"IBM Plex Sans",sans-serif}
   table.teams input:focus{outline:2px solid var(--focus);outline-offset:1px}
   table.teams td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
-  table.teams td.flag{color:var(--loss)}
   table.teams tr.totals td{font-weight:600;border-bottom:none;border-top:2px solid var(--ink);color:var(--ink);padding-top:8px}
   table.teams .del{cursor:pointer;color:var(--ink-faint);border:none;background:none;font-size:15px;padding:0 4px}
   table.teams .del:hover{color:var(--loss)}
   .teambuilder .addbtn{margin-top:8px;font-family:inherit;font-size:12.5px;padding:6px 13px;border:1px solid var(--rule-strong);
        background:var(--card);border-radius:3px;cursor:pointer;color:var(--ink-soft)}
   .teambuilder .addbtn:hover{border-color:var(--ink-soft);color:var(--ink)}
-  .allocwarn{font-size:12.5px;margin-top:8px;padding:7px 10px;border-left:3px solid var(--loss);
-             background:#F7E7E5;color:#6E2822}
-  .allocok{font-size:12.5px;margin-top:8px;padding:7px 10px;border-left:3px solid var(--next);
-           background:#DCEAE4;color:#1F4A40}
+  .allocwarn{font-size:12.5px;margin-top:8px;padding:7px 10px;border-left:3px solid var(--loss);background:#F7E7E5;color:#6E2822}
+  .allocok{font-size:12.5px;margin-top:8px;padding:7px 10px;border-left:3px solid var(--next);background:#DCEAE4;color:#1F4A40}
 
-  main{display:grid;grid-template-columns:minmax(340px,430px) 1fr;align-items:start}
+  main{display:grid;grid-template-columns:minmax(340px,440px) 1fr;align-items:start}
   @media (max-width:980px){main{grid-template-columns:1fr}}
   .panel{padding:22px 28px 40px}
   .panel.controls{border-right:1px solid var(--rule);background:#EAEDE8}
@@ -90,17 +100,16 @@
   .teamselect select{padding:5px 8px;border:1px solid var(--rule-strong);border-radius:3px;background:#fff;font-family:inherit;font-size:13px;color:var(--ink)}
 
   .rolecard{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--rule-strong);padding:14px 16px;margin-bottom:12px}
-  .rolecard.hosp{border-left-color:var(--hosp)} .rolecard.comm{border-left-color:var(--comm)}
-  .rolecard.hspc{border-left-color:var(--hspc)} .rolecard.clin{border-left-color:var(--clin)}
+  .rolecard.hosp{border-left-color:var(--hosp)} .rolecard.outp{border-left-color:var(--outp)}
   .rolecard h4{margin:0 0 3px;font-size:14px;font-weight:600}
-  .rolecard .rolesub{margin:0 0 10px;font-size:11.5px;color:var(--ink-faint)}
+  .rolecard .rolesub{margin:0 0 12px;font-size:11.5px;color:var(--ink-faint)}
+  .subblock{margin:12px 0 4px;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;border-bottom:1px solid var(--rule);padding-bottom:4px}
   .rolegrid{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
   .rolegrid label{font-size:12.5px;color:var(--ink-soft)}
   .rolegrid input[type=number]{width:74px;padding:3px 6px;border:1px solid var(--rule-strong);border-radius:3px;
        background:#fff;font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;color:var(--ink)}
-  .rolegrid select{width:100%;padding:3px 6px;border:1px solid var(--rule-strong);border-radius:3px;
-       background:#fff;font-family:inherit;font-size:12.5px;color:var(--ink)}
-  .rolegrid .full{grid-column:1 / -1;margin-top:6px}
+  .rolegrid select{width:100%;padding:3px 6px;border:1px solid var(--rule-strong);border-radius:3px;background:#fff;font-family:inherit;font-size:12.5px;color:var(--ink)}
+  .rolegrid .full{grid-column:1 / -1;margin-top:4px}
   .rolegrid input:focus,.rolegrid select:focus{outline:2px solid var(--focus);outline-offset:1px}
   .chk{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);grid-column:1 / -1;padding:4px 0}
   .chk input{width:auto}
@@ -140,8 +149,7 @@
   .callout.risk{background:#F7E7E5;border-left-color:var(--loss);color:#6E2822}
 
   details.feecard{background:var(--card);border:1px solid var(--rule);margin:0 28px 40px;padding:4px 22px 20px}
-  details.feecard summary{cursor:pointer;padding:16px 0;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
-    color:var(--ink-soft);font-weight:600;list-style:none}
+  details.feecard summary{cursor:pointer;padding:16px 0;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;list-style:none}
   details.feecard summary::-webkit-details-marker{display:none}
   details.feecard summary::before{content:"\25B8  ";color:var(--ink-faint)}
   details.feecard[open] summary::before{content:"\25BE  "}
@@ -155,7 +163,7 @@
 
 <header>
   <h1>Program, team and billing model</h1>
-  <p>Program sizing, per-team allocation, and per-physician income by rotation. Every physician bills individually — nothing here pools income. Switch scenarios to compare today's unstructured model against a rotational model.</p>
+  <p>Program sizing, per-team allocation, and per-physician income by rotation. Two service lines — an inpatient team and an outpatient team that covers clinic, home visits and hospice together. Every physician bills individually; nothing here pools income.</p>
   <div class="tabs" id="tabs"></div>
 </header>
 
@@ -163,19 +171,28 @@
 
 <section class="program">
   <h2>Program overview</h2>
-  <p class="subhead">Set the whole-program parameters, then allocate physicians and patients across teams below. Teams need not be the same size — a busier area carries more of both.</p>
+  <p class="subhead">Set the whole-program parameters, define your FTE bands, then allocate physicians and patients across teams. Teams need not be the same size — a busier area carries more of both.</p>
   <div class="progrid">
     <div class="proinputs">
       <div class="field"><label for="totalPatients">Patients in program at any time</label><input class="num" id="totalPatients" type="number" step="10" value="480"></div>
       <div class="field"><label for="totalMDs">Physicians in program</label><input class="num" id="totalMDs" type="number" step="1" value="22"></div>
       <div class="field"><label for="patientsPerFTE">Patients per 1.0 FTE</label><input class="num" id="patientsPerFTE" type="number" step="1" value="45"></div>
-      <div class="field"><label for="avgFTE">Average clinical FTE per MD</label><input class="num" id="avgFTE" type="number" step="0.05" value="0.85"></div>
     </div>
     <div class="outstats">
       <div class="stat"><span class="l">FTE required for the panel</span><span class="v num" id="outFTE">—</span></div>
       <div class="stat"><span class="l">FTE the roster supplies</span><span class="v num" id="outFTEsupply">—</span></div>
       <div class="stat"><span class="l">Physicians suggested</span><span class="v num" id="outMDsNeeded">—</span></div>
       <div class="stat"><span class="l">Patients per MD, program</span><span class="v num" id="outPPMD">—</span></div>
+    </div>
+
+    <div class="fteband">
+      <h3>FTE bands</h3>
+      <p class="h">Assign whole physicians to each commitment level rather than one average. The weighted FTE drives the supply figure above.</p>
+      <table class="fte">
+        <thead><tr><th>Band</th><th>% FTE</th><th># Physicians</th><th>FTE contributed</th></tr></thead>
+        <tbody id="fteBody"></tbody>
+        <tfoot><tr class="totals"><td>Total</td><td></td><td class="n" id="fteHeadcount">—</td><td class="n" id="fteWeighted">—</td></tr></tfoot>
+      </table>
     </div>
 
     <div class="teambuilder">
@@ -196,37 +213,30 @@
 <main>
   <section class="panel controls">
     <h2 class="section">Team being modelled</h2>
-    <div class="teamselect">
-      <label for="activeTeam">Show billing for</label>
-      <select id="activeTeam"></select>
-    </div>
+    <div class="teamselect"><label for="activeTeam">Show billing for</label><select id="activeTeam"></select></div>
     <p class="hint">Service-line settings below apply to the selected team in the active scenario. Per-MD income scales to that team's physician count.</p>
-
     <div class="field"><label for="clinweeks">Clinical weeks per MD, per year</label><input class="num" id="clinweeks" type="number" step="1" value="44"></div>
     <div class="field"><label for="block">Block length, weeks</label><input class="num" id="block" type="number" step="1" value="2"></div>
     <div class="field"><label for="stipend">On-call and stipends, per MD/yr</label><input class="num" id="stipend" type="number" step="500" value="18000"></div>
     <div class="field"><label for="adhoc">Ad hoc codes, per MD/yr</label><input class="num" id="adhoc" type="number" step="250" value="4000"></div>
 
-    <h2 class="section">Service lines</h2>
-    <p class="hint">"MDs per week" is how many of this team's physicians staff the line at once. "Encounters per day" is per physician on that line, not the team total.</p>
     <div id="roleCards"></div>
     <div class="warn" id="rosterWarn" hidden></div>
 
     <h2 class="section">G512 case management</h2>
-    <p class="hint">Billed per MD, one physician per patient per week. Enter weeks directly rather than as a percentage.</p>
+    <p class="hint">Billed per MD, one physician per patient per week. Enter weeks directly, out of 52.</p>
     <div class="field"><label for="g_panel">Community patients per MD</label><input class="num" id="g_panel" type="number" step="1" value="16"></div>
     <div class="field"><label for="g_weeks">Weeks G512 billed per patient/yr</label><input class="num" id="g_weeks" type="number" step="1" value="38"></div>
-    <p class="hint">Out of a possible 52. The gap covers weeks before enrolment, weeks the patient is another MRP's, and weeks lost to mid-week handoff.</p>
 
     <h2 class="section">CPOC and BBOC</h2>
-    <p class="hint">On-call program payments, entered as an annual amount per physician. Shown as a line in annual claim volume.</p>
+    <p class="hint">On-call program payments, annual per physician.</p>
     <div class="field"><label for="cpoc">CPOC, per MD/yr</label><input class="num" id="cpoc" type="number" step="250" value="9000"></div>
     <div class="field"><label for="bboc">BBOC, per MD/yr</label><input class="num" id="bboc" type="number" step="250" value="6000"></div>
   </section>
 
   <section class="panel results">
     <div class="card">
-      <h3>Annual income per physician, across scenarios</h3>
+      <h3>Annual income per physician, by scenario</h3>
       <p class="sub">Selected team. Fee-for-service, G512, CPOC and BBOC, on-call, stipends and ad hoc, one physician, one year</p>
       <div class="bars" id="scenarioBars"></div>
     </div>
@@ -260,10 +270,9 @@
     </div>
 
     <div class="card">
-      <h3>Revenue per encounter, by code</h3>
-      <p class="sub">What one encounter is worth in each line. K023 units follow the minutes set for that line.</p>
+      <h3>Revenue per visit type, by code</h3>
+      <p class="sub">Each visit type built line by line from the codes it generates. K023 units follow the minutes set for that visit.</p>
       <table class="item">
-        <tr><th>Code</th><th>New</th><th>Subsequent</th></tr>
         <tbody id="itemBody"></tbody>
       </table>
     </div>
@@ -278,7 +287,7 @@
 
     <div class="card">
       <h3>Does the day fit?</h3>
-      <p class="sub">Direct patient contact implied by encounter counts and minutes per line</p>
+      <p class="sub">Direct patient contact implied by visit counts and minutes per line</p>
       <div class="callout" id="hoursNote"></div>
     </div>
   </section>
@@ -289,19 +298,20 @@
   <p class="hint">Fixed values, shared across all scenarios and teams. Edit once here.</p>
   <div class="feegrid">
     <div class="field"><label><span class="code">A945</span>Special palliative consultation</label><input class="num" id="f_A945" type="number" step="0.25" value="144.75"></div>
-    <div class="field"><label><span class="code">C882</span>Palliative subsequent visit, GP</label><input class="num" id="f_C882" type="number" step="0.25" value="38.00"></div>
+    <div class="field"><label><span class="code">C882</span>Palliative subsequent, GP</label><input class="num" id="f_C882" type="number" step="0.25" value="38.00"></div>
     <div class="field"><label><span class="code">A900</span>Complex house call assessment</label><input class="num" id="f_A900" type="number" step="0.25" value="45.15"></div>
     <div class="field"><label><span class="code">K023</span>Palliative support, per 30 min</label><input class="num" id="f_K023" type="number" step="0.25" value="62.75"></div>
     <div class="field"><label><span class="code">B966</span>Home visit travel premium</label><input class="num" id="f_B966" type="number" step="0.25" value="36.40"></div>
     <div class="field"><label><span class="code">B998</span>Home visit, person seen</label><input class="num" id="f_B998" type="number" step="0.25" value="40.00"></div>
-    <div class="field"><label><span class="code">SVP</span>Evening / weekend premium</label><input class="num" id="f_SVP" type="number" step="0.25" value="60.00"></div>
     <div class="field"><label><span class="code">E082</span>MRP premium</label><input class="num" id="f_E082" type="number" step="0.25" value="30.00"></div>
+    <div class="field"><label><span class="code">K121</span>Inpatient case conference / rounds, per unit</label><input class="num" id="f_K121" type="number" step="0.25" value="32.45"></div>
+    <div class="field"><label><span class="code">K700</span>Outpatient case conference / rounds, per unit</label><input class="num" id="f_K700" type="number" step="0.25" value="32.45"></div>
     <div class="field"><label><span class="code">G512</span>Weekly case management</label><input class="num" id="f_G512" type="number" step="0.25" value="67.75"></div>
   </div>
 </details>
 
 <footer>
-  Fee amounts shipped with this file are placeholders. C882 is used as the palliative subsequent visit code since most of the group bills as GPs; specialists billing C982 should be modelled separately if the mix is material. E082 stands in for the most responsible physician premium and applies to a set percentage of inpatient subsequent visits. SVP is a single blended evening/weekend premium and is no longer applied to home visits by default. K023 units are full half-hour units, claimable once half the unit is reached. G511, K071 and K072 are not eligible for payment in a week where G512 is billed. CPOC and BBOC are entered as flat annual amounts per physician; confirm the actual per-MD distribution with your call group, since it depends on group size and roster. "Current" approximates today's unstructured model within the same service-line framework and will not match your remittance data — calibrate before relying on the comparison. Patient volumes, patients per FTE, and headcounts are planning estimates entered by you. This model projects gross billings, with no allowance for overhead, taxes, or corporate structure.
+  Fee amounts shipped with this file are placeholders. C882 is the palliative subsequent visit code for GPs; specialists billing C982 should be modelled separately. A new hospital consult is modelled as A945 (50-minute consultation); subsequent visits as K023 for the greater part of each 20-minute period after, per your specification, with an MRP premium (E082) applied to the MRP subset. K121 and K700 are case conference / rounds codes billed per unit; enter units per week to reflect your team's rounding practice. Community new consults are A945 plus optional K023 and the home visit premiums B966 and B998; community follow-ups are K023-based with the home premiums. Bullet or educational rounds are not case conferences under the Schedule — K121 and K700 require a most-responsible physician and at least two other participants discussing an individual patient, with record and time-keeping requirements. G511, K071 and K072 are not eligible in a week where G512 is billed. CPOC and BBOC are flat annual amounts per physician; confirm the per-MD distribution with your call group. "Current" approximates today's unstructured model and will not match your remittance data — calibrate before relying on the comparison. This model projects gross billings only, with no allowance for overhead, taxes, or corporate structure.
 </footer>
 
 <script>
@@ -315,40 +325,55 @@ const MODES = [
   ["beyond50", "assessment fee, K023 beyond 50 min"],
   ["instead", "K023 replaces assessment over 20 min"]
 ];
-const ROLE_META = [
-  { id:"hosp", name:"Hospital consults and PCU", assessNew:"A945", assessFu:"C882", mrp:true, canHome:false },
-  { id:"comm", name:"Community home visits", assessNew:"A945", assessFu:"A900", mrp:false, canHome:true },
-  { id:"hspc", name:"Hospice", assessNew:"A945", assessFu:"C882", mrp:false, canHome:false },
-  { id:"clin", name:"Outpatient clinic", assessNew:"A945", assessFu:"C882", mrp:false, canHome:false }
+
+// ---- FTE bands ----
+let fteBands = [
+  { pct:100, count:14 },
+  { pct:80, count:5 },
+  { pct:60, count:2 },
+  { pct:40, count:1 }
 ];
 
-function baseRoles(mult){
+// ---- Scenarios: current + expected only ----
+const ORDER = ["current", "expected"];
+const SCEN_LABEL = { current:"Current (unstructured)", expected:"Expected (rotational)" };
+let active = "expected";
+
+// Default line params. Inpatient uses explicit new/followup/MRP volumes.
+// Outpatient combines clinic + home visits + hospice, split into new consults and follow-ups.
+function defaultLines(scen){
+  const rot = scen === "expected";
   return {
-    hosp:{staff:2.2*mult, days:5, enc:7, pctNew:30, minNew:60, minFu:22, modeNew:"beyond50", modeFu:"none", svp:5, mrpPct:60, home:false},
-    comm:{staff:1.2*mult, days:5, enc:5, pctNew:20, minNew:70, minFu:40, modeNew:"beyond50", modeFu:"instead", svp:0, mrpPct:0, home:true},
-    hspc:{staff:0.4*mult, days:5, enc:7, pctNew:20, minNew:55, minFu:28, modeNew:"beyond50", modeFu:"instead", svp:0, mrpPct:0, home:false},
-    clin:{staff:0.4*mult, days:4, enc:8, pctNew:30, minNew:55, minFu:24, modeNew:"beyond50", modeFu:"none", svp:0, mrpPct:0, home:false}
+    hosp: {
+      staff: rot ? 2.2 : 1.4,
+      days: rot ? 5 : 3,
+      newPerDay: rot ? 2 : 1.5,
+      fuPerDay: rot ? 7 : 5,           // total subsequent visits/day
+      mrpShare: rot ? 60 : 40,         // % of subsequent that are MRP patients (E082)
+      newMin: rot ? 55 : 55,           // consult minutes (A945 = 50 min service)
+      fuMin: rot ? 25 : 20,            // subsequent minutes -> K023 units for part beyond
+      fuMode: "instead",               // subsequent billed via K023
+      roundsUnits: rot ? 3 : 2         // K121 units per week
+    },
+    outp: {
+      staff: rot ? 2.0 : 2.3,
+      days: rot ? 5 : 3,
+      newPerDay: rot ? 1.5 : 1.5,
+      fuPerDay: rot ? 5 : 4,
+      newMin: rot ? 75 : 60,           // new home/clinic consult
+      newMode: "beyond50",             // A945 + K023 beyond 50
+      fuMin: rot ? 45 : 35,            // follow-up minutes -> K023
+      home: true,                      // apply B966 + B998
+      roundsUnits: rot ? 2 : 1         // K700 units per week
+    }
   };
 }
 const SCENARIOS = {
-  current: { label:"Current (unstructured)", roles:{
-      hosp:{staff:1.4, days:3, enc:6, pctNew:30, minNew:55, minFu:20, modeNew:"beyond50", modeFu:"none", svp:8, mrpPct:40, home:false},
-      comm:{staff:1.4, days:2, enc:4, pctNew:20, minNew:55, minFu:30, modeNew:"beyond50", modeFu:"instead", svp:0, mrpPct:0, home:true},
-      hspc:{staff:0.3, days:1, enc:5, pctNew:20, minNew:55, minFu:25, modeNew:"beyond50", modeFu:"instead", svp:0, mrpPct:0, home:false},
-      clin:{staff:0.9, days:1, enc:7, pctNew:30, minNew:50, minFu:22, modeNew:"beyond50", modeFu:"none", svp:0, mrpPct:0, home:false}
-    }, g512:{panel:14, weeks:40} },
-  expected: { label:"Expected (rotational)", roles:baseRoles(1), g512:{panel:16, weeks:38} },
-  proposed: { label:"Proposed (optimized)", roles:{
-      hosp:{staff:2.2, days:5, enc:8, pctNew:30, minNew:65, minFu:25, modeNew:"beyond50", modeFu:"none", svp:5, mrpPct:65, home:false},
-      comm:{staff:1.2, days:5, enc:5.5, pctNew:20, minNew:80, minFu:48, modeNew:"beyond50", modeFu:"instead", svp:0, mrpPct:0, home:true},
-      hspc:{staff:0.2, days:5, enc:8, pctNew:20, minNew:60, minFu:30, modeNew:"beyond50", modeFu:"instead", svp:0, mrpPct:0, home:false},
-      clin:{staff:0.4, days:4, enc:9, pctNew:30, minNew:60, minFu:25, modeNew:"beyond50", modeFu:"none", svp:0, mrpPct:0, home:false}
-    }, g512:{panel:17, weeks:44} }
+  current:  { lines: defaultLines("current"),  g512:{panel:14, weeks:40} },
+  expected: { lines: defaultLines("expected"), g512:{panel:16, weeks:38} }
 };
-const ORDER = ["current", "expected", "proposed"];
-let active = "expected";
 
-// Teams: name, mds, patients. Service-line params live per (team, scenario).
+// Teams
 let teams = [
   { id:"t1", name:"Northwest", mds:6, patients:150 },
   { id:"t2", name:"Southwest", mds:5, patients:120 },
@@ -357,76 +382,99 @@ let teams = [
 ];
 let activeTeam = "t1";
 let teamSeq = 5;
-// Per-team, per-scenario service-line state. Lazily initialised from SCENARIOS scaled to team size.
 const teamState = {};
 function ensureTeamState(tid){
   const t = teams.find(x => x.id === tid);
   if (!teamState[tid]) teamState[tid] = {};
   for (const k of ORDER){
     if (!teamState[tid][k]){
-      // scale default staffing so it roughly fits the team's MD count
       const mult = t ? Math.max(t.mds, 1) / 5 : 1;
-      const src = k === "expected" ? baseRoles(mult) : JSON.parse(JSON.stringify(SCENARIOS[k].roles));
-      teamState[tid][k] = { roles: JSON.parse(JSON.stringify(src)), g512: JSON.parse(JSON.stringify(SCENARIOS[k].g512)) };
+      const base = defaultLines(k);
+      base.hosp.staff *= mult; base.outp.staff *= mult;
+      teamState[tid][k] = { lines: base, g512: JSON.parse(JSON.stringify(SCENARIOS[k].g512)) };
     }
   }
 }
 
+const LINE_META = {
+  hosp: { name:"Inpatient consults and PCU", cls:"hosp" },
+  outp: { name:"Outpatient: clinic, home visits, hospice", cls:"outp" }
+};
+
 function buildTabs(){
   $("tabs").innerHTML = ORDER.map(k =>
-    "<button data-k='" + k + "'" + (k === active ? " class='active'" : "") + ">" + SCENARIOS[k].label + "</button>").join("");
+    "<button data-k='" + k + "'" + (k === active ? " class='active'" : "") + ">" + SCEN_LABEL[k] + "</button>").join("");
   document.querySelectorAll("#tabs button").forEach(b => b.addEventListener("click", () => { saveDOM(); active = b.dataset.k; loadDOM(); buildTabs(); render(); }));
 }
 
+function inp(id, step){ return "<input type='number' id='" + id + "' step='" + step + "'>"; }
+function labelRow(label, id, step){ return "<label for='" + id + "'>" + label + "</label>" + inp(id, step); }
+function sel(id){ return "<select id='" + id + "'>" + MODES.map(m => "<option value='" + m[0] + "'>" + m[1] + "</option>").join("") + "</select>"; }
+
 function buildRoles(){
-  let html = "";
-  for (const m of ROLE_META){
-    const p = f => m.id + "_" + f;
-    html += "<div class='rolecard " + m.id + "'><h4>" + m.name + "</h4><p class='rolesub'>Encounters per day are per physician on this line</p><div class='rolegrid'>" +
-      row("MDs per week", p("staff"), 0.1) +
-      row("Days per week", p("days"), 0.5) +
-      row("Encounters per day, per MD", p("enc"), 0.5) +
-      row("New encounters, %", p("pctNew"), 5) +
-      row("Minutes, new", p("minNew"), 5) +
-      row("Minutes, subsequent", p("minFu"), 5) +
-      (m.canHome ? "" : row("Evening or weekend, %", p("svp"), 5)) +
-      (m.mrp ? row("MRP premium applies, %", p("mrpPct"), 5) : "") +
-      (m.canHome ? "<div class='chk'><input type='checkbox' id='" + p("home") + "'><label for='" + p("home") + "'>Apply B966 and B998 to every visit</label></div>" : "") +
-      "<div class='full'><label for='" + p("modeNew") + "'>K023 on new encounters</label>" + sel(p("modeNew")) + "</div>" +
-      "<div class='full'><label for='" + p("modeFu") + "'>K023 on subsequent encounters</label>" + sel(p("modeFu")) + "</div>" +
-      "</div></div>";
-  }
+  const html = `
+  <div class='rolecard hosp'>
+    <h4>Inpatient consults and PCU</h4>
+    <p class='rolesub'>New consults, subsequent visits and MRP patients entered separately. Per-day counts are per physician.</p>
+    <div class='rolegrid'>
+      ${labelRow("MDs per week", "hosp_staff", 0.1)}
+      ${labelRow("Days per week", "hosp_days", 0.5)}
+      <div class='subblock full'>New consults</div>
+      ${labelRow("New consults per day", "hosp_newPerDay", 0.5)}
+      ${labelRow("Minutes per consult", "hosp_newMin", 5)}
+      <div class='subblock full'>Subsequent visits</div>
+      ${labelRow("Subsequent visits per day", "hosp_fuPerDay", 0.5)}
+      ${labelRow("Minutes per subsequent", "hosp_fuMin", 5)}
+      ${labelRow("Of these, MRP patients %", "hosp_mrpShare", 5)}
+      <div class='subblock full'>Rounds</div>
+      ${labelRow("K121 units per week", "hosp_roundsUnits", 1)}
+    </div>
+  </div>
+  <div class='rolecard outp'>
+    <h4>Outpatient: clinic, home visits, hospice</h4>
+    <p class='rolesub'>One combined team. New consults bill A945 (\u00b1 K023); follow-ups bill K023. Per-day counts are per physician.</p>
+    <div class='rolegrid'>
+      ${labelRow("MDs per week", "outp_staff", 0.1)}
+      ${labelRow("Days per week", "outp_days", 0.5)}
+      <div class='subblock full'>New consults (A945 \u00b1 K023)</div>
+      ${labelRow("New consults per day", "outp_newPerDay", 0.5)}
+      ${labelRow("Minutes per consult", "outp_newMin", 5)}
+      <div class='full'><label for='outp_newMode'>K023 on new consults</label>${sel("outp_newMode")}</div>
+      <div class='subblock full'>Follow-ups (K023)</div>
+      ${labelRow("Follow-ups per day", "outp_fuPerDay", 0.5)}
+      ${labelRow("Minutes per follow-up", "outp_fuMin", 5)}
+      <div class='chk'><input type='checkbox' id='outp_home'><label for='outp_home'>Apply B966 and B998 to every visit</label></div>
+      <div class='subblock full'>Rounds</div>
+      ${labelRow("K700 units per week", "outp_roundsUnits", 1)}
+    </div>
+  </div>`;
   $("roleCards").innerHTML = html;
   document.querySelectorAll("#roleCards input, #roleCards select").forEach(el => el.addEventListener("input", render));
 }
-function row(label, id, step){ return "<label for='" + id + "'>" + label + "</label><input type='number' id='" + id + "' step='" + step + "'>"; }
-function sel(id){ return "<select id='" + id + "'>" + MODES.map(m => "<option value='" + m[0] + "'>" + m[1] + "</option>").join("") + "</select>"; }
 
 function loadDOM(){
   ensureTeamState(activeTeam);
   const st = teamState[activeTeam][active];
-  for (const m of ROLE_META){
-    const r = st.roles[m.id];
-    for (const f in r){
-      const el = $(m.id + "_" + f);
-      if (!el) continue;
-      if (el.type === "checkbox") el.checked = !!r[f]; else el.value = r[f];
-    }
-  }
-  $("g_panel").value = st.g512.panel;
-  $("g_weeks").value = st.g512.weeks;
+  const setv = (id, val) => { const el = $(id); if (!el) return; if (el.type === "checkbox") el.checked = !!val; else el.value = val; };
+  const h = st.lines.hosp, o = st.lines.outp;
+  setv("hosp_staff", h.staff); setv("hosp_days", h.days); setv("hosp_newPerDay", h.newPerDay);
+  setv("hosp_newMin", h.newMin); setv("hosp_fuPerDay", h.fuPerDay); setv("hosp_fuMin", h.fuMin);
+  setv("hosp_mrpShare", h.mrpShare); setv("hosp_roundsUnits", h.roundsUnits);
+  setv("outp_staff", o.staff); setv("outp_days", o.days); setv("outp_newPerDay", o.newPerDay);
+  setv("outp_newMin", o.newMin); setv("outp_newMode", o.newMode); setv("outp_fuPerDay", o.fuPerDay);
+  setv("outp_fuMin", o.fuMin); setv("outp_home", o.home); setv("outp_roundsUnits", o.roundsUnits);
+  setv("g_panel", st.g512.panel); setv("g_weeks", st.g512.weeks);
 }
 function saveDOM(){
   ensureTeamState(activeTeam);
   const st = teamState[activeTeam][active];
-  for (const m of ROLE_META){
-    const r = st.roles[m.id];
-    for (const f in r){
-      const el = $(m.id + "_" + f);
-      if (!el) continue;
-      r[f] = el.type === "checkbox" ? el.checked : (parseFloat(el.value) || 0);
-    }
-  }
+  const h = st.lines.hosp, o = st.lines.outp;
+  h.staff=v("hosp_staff"); h.days=v("hosp_days"); h.newPerDay=v("hosp_newPerDay");
+  h.newMin=v("hosp_newMin"); h.fuPerDay=v("hosp_fuPerDay"); h.fuMin=v("hosp_fuMin");
+  h.mrpShare=v("hosp_mrpShare"); h.roundsUnits=v("hosp_roundsUnits");
+  o.staff=v("outp_staff"); o.days=v("outp_days"); o.newPerDay=v("outp_newPerDay");
+  o.newMin=v("outp_newMin"); o.newMode=($("outp_newMode")||{}).value||"beyond50"; o.fuPerDay=v("outp_fuPerDay");
+  o.fuMin=v("outp_fuMin"); o.home=($("outp_home")||{}).checked||false; o.roundsUnits=v("outp_roundsUnits");
   st.g512 = { panel:v("g_panel"), weeks:v("g_weeks") };
 }
 
@@ -435,45 +483,73 @@ function buildTeamSelect(){
 }
 
 function units(minutes){ if (minutes <= 0) return 0; return Math.floor(minutes / 30) + (minutes % 30 >= 15 ? 1 : 0); }
+const fee = c => v("f_" + c);
 
-function encounter(m, r, kind){
-  const fee = c => v("f_" + c);
-  const minutes = kind === "new" ? r.minNew : r.minFu;
-  const mode = kind === "new" ? r.modeNew : r.modeFu;
-  const assess = kind === "new" ? m.assessNew : m.assessFu;
+// visit builders return {lines:[{code,qty,amount}], total, minutes}
+function hospNew(h){
+  const lines = [{ code:"A945", qty:1, amount:fee("A945") }];
+  const k = units(h.newMin - 50);
+  if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
+  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:h.newMin };
+}
+function hospFu(h, isMRP){
+  // subsequent billed via K023 for the part beyond, plus E082 if MRP
   const lines = [];
-  if (mode === "instead" && minutes > 20){
-    const k = units(minutes);
+  const k = units(h.fuMin);
+  if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
+  else lines.push({ code:"C882", qty:1, amount:fee("C882") });
+  if (isMRP){ lines.push({ code:"E082", qty:1, amount:fee("E082") }); }
+  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:h.fuMin };
+}
+function outpNew(o){
+  const lines = [];
+  if (o.newMode === "instead" && o.newMin > 20){
+    const k = units(o.newMin);
     lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
-  } else if (mode === "beyond50"){
-    lines.push({ code:assess, qty:1, amount:fee(assess) });
-    const k = units(minutes - 50);
+  } else if (o.newMode === "beyond50"){
+    lines.push({ code:"A945", qty:1, amount:fee("A945") });
+    const k = units(o.newMin - 50);
     if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
   } else {
-    lines.push({ code:assess, qty:1, amount:fee(assess) });
+    lines.push({ code:"A945", qty:1, amount:fee("A945") });
   }
-  if (r.home){ lines.push({ code:"B966", qty:1, amount:fee("B966") }); lines.push({ code:"B998", qty:1, amount:fee("B998") }); }
-  if (!m.canHome){
-    const svp = Math.min(Math.max(r.svp, 0), 100) / 100;
-    if (svp > 0) lines.push({ code:"SVP", qty:svp, amount:svp * fee("SVP") });
-  }
-  if (m.mrp && kind === "fu"){
-    const mm = Math.min(Math.max(r.mrpPct, 0), 100) / 100;
-    if (mm > 0) lines.push({ code:"E082", qty:mm, amount:mm * fee("E082") });
-  }
-  return { lines, total:lines.reduce((a, l) => a + l.amount, 0), minutes };
+  if (o.home){ lines.push({ code:"B966", qty:1, amount:fee("B966") }); lines.push({ code:"B998", qty:1, amount:fee("B998") }); }
+  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:o.newMin };
 }
-function roleWeek(m, r){
-  const pn = Math.min(Math.max(r.pctNew, 0), 100) / 100;
-  const en = encounter(m, r, "new"), ef = encounter(m, r, "fu");
-  const nNew = r.days * r.enc * pn, nFu = r.days * r.enc * (1 - pn);
-  const codes = {};
-  const add = (c, q, a) => { if (!codes[c]) codes[c] = { qty:0, amount:0 }; codes[c].qty += q; codes[c].amount += a; };
-  for (const l of en.lines) add(l.code, l.qty * nNew, l.amount * nNew);
-  for (const l of ef.lines) add(l.code, l.qty * nFu, l.amount * nFu);
-  const revenue = en.total * nNew + ef.total * nFu;
-  const contactHours = (en.minutes * nNew + ef.minutes * nFu) / 60;
-  return { revenue, codes, contactHours, hoursPerDay: r.days > 0 ? contactHours / r.days : 0, en, ef };
+function outpFu(o){
+  const lines = [];
+  const k = units(o.fuMin);
+  if (k > 0) lines.push({ code:"K023", qty:k, amount:k * fee("K023") });
+  else lines.push({ code:"A900", qty:1, amount:fee("A900") });
+  if (o.home){ lines.push({ code:"B966", qty:1, amount:fee("B966") }); lines.push({ code:"B998", qty:1, amount:fee("B998") }); }
+  return { lines, total:lines.reduce((a,l)=>a+l.amount,0), minutes:o.fuMin };
+}
+
+function hospWeek(h){
+  const codes = {}; const add = (c,q,a)=>{ if(!codes[c])codes[c]={qty:0,amount:0}; codes[c].qty+=q; codes[c].amount+=a; };
+  const nNew = h.days * h.newPerDay;
+  const nFu = h.days * h.fuPerDay;
+  const mrpShare = Math.min(Math.max(h.mrpShare,0),100)/100;
+  const en = hospNew(h);
+  const efMRP = hospFu(h, true), efNon = hospFu(h, false);
+  for (const l of en.lines) add(l.code, l.qty*nNew, l.amount*nNew);
+  for (const l of efMRP.lines) add(l.code, l.qty*nFu*mrpShare, l.amount*nFu*mrpShare);
+  for (const l of efNon.lines) add(l.code, l.qty*nFu*(1-mrpShare), l.amount*nFu*(1-mrpShare));
+  add("K121", h.roundsUnits, h.roundsUnits*fee("K121"));
+  const revenue = en.total*nNew + efMRP.total*nFu*mrpShare + efNon.total*nFu*(1-mrpShare) + h.roundsUnits*fee("K121");
+  const contactHours = (en.minutes*nNew + h.fuMin*nFu)/60;
+  return { revenue, codes, hoursPerDay: h.days>0 ? contactHours/h.days : 0, en, efMRP, efNon, nNew, nFu, mrpShare };
+}
+function outpWeek(o){
+  const codes = {}; const add = (c,q,a)=>{ if(!codes[c])codes[c]={qty:0,amount:0}; codes[c].qty+=q; codes[c].amount+=a; };
+  const nNew = o.days * o.newPerDay, nFu = o.days * o.fuPerDay;
+  const en = outpNew(o), ef = outpFu(o);
+  for (const l of en.lines) add(l.code, l.qty*nNew, l.amount*nNew);
+  for (const l of ef.lines) add(l.code, l.qty*nFu, l.amount*nFu);
+  add("K700", o.roundsUnits, o.roundsUnits*fee("K700"));
+  const revenue = en.total*nNew + ef.total*nFu + o.roundsUnits*fee("K700");
+  const contactHours = (en.minutes*nNew + o.fuMin*nFu)/60;
+  return { revenue, codes, hoursPerDay: o.days>0 ? contactHours/o.days : 0, en, ef, nNew, nFu };
 }
 
 function computeTeamScenario(tid, k){
@@ -481,57 +557,71 @@ function computeTeamScenario(tid, k){
   const st = teamState[tid][k];
   const t = teams.find(x => x.id === tid);
   const teamSize = Math.max(t ? t.mds : 1, 1);
-  const clinWeeks = v("clinweeks"), block = Math.max(v("block"), 1);
-  const rows = [];
-  let annualFFS = 0;
-  for (const m of ROLE_META){
-    const r = st.roles[m.id];
-    const rw = roleWeek(m, r);
-    const weeksPerMD = (r.staff / teamSize) * clinWeeks;
-    rows.push({ m, r, rw, weeksPerMD, staff:r.staff });
-    annualFFS += rw.revenue * weeksPerMD;
-  }
-  const gWeeks = Math.min(Math.max(st.g512.weeks, 0), 52);
-  const gClaims = st.g512.panel * gWeeks;
-  const gAmount = gClaims * v("f_G512");
-  const cpoc = v("cpoc"), bboc = v("bboc");
-  const other = v("stipend") + v("adhoc");
+  const clinWeeks = v("clinweeks"), block = Math.max(v("block"),1);
+  const hw = hospWeek(st.lines.hosp), ow = outpWeek(st.lines.outp);
+  const hWeeksPerMD = (st.lines.hosp.staff/teamSize)*clinWeeks;
+  const oWeeksPerMD = (st.lines.outp.staff/teamSize)*clinWeeks;
+  const rows = [
+    { key:"hosp", meta:LINE_META.hosp, rw:hw, staff:st.lines.hosp.staff, weeksPerMD:hWeeksPerMD },
+    { key:"outp", meta:LINE_META.outp, rw:ow, staff:st.lines.outp.staff, weeksPerMD:oWeeksPerMD }
+  ];
+  const annualFFS = hw.revenue*hWeeksPerMD + ow.revenue*oWeeksPerMD;
+  const gWeeks = Math.min(Math.max(st.g512.weeks,0),52);
+  const gClaims = st.g512.panel*gWeeks;
+  const gAmount = gClaims*fee("G512");
+  const cpoc = v("cpoc"), bboc = v("bboc"), other = v("stipend")+v("adhoc");
   const total = annualFFS + gAmount + cpoc + bboc + other;
-  const demandWeeksPerTeam = rows.reduce((a, x) => a + x.staff, 0) * 52;
-  const supplyWeeksPerTeam = teamSize * clinWeeks;
+  const demandWeeksPerTeam = (st.lines.hosp.staff + st.lines.outp.staff)*52;
+  const supplyWeeksPerTeam = teamSize*clinWeeks;
   return { rows, annualFFS, gAmount, gClaims, cpoc, bboc, other, total, demandWeeksPerTeam, supplyWeeksPerTeam, clinWeeks, block, teamSize };
+}
+
+function renderFteTable(){
+  let head = 0, weighted = 0;
+  let html = "";
+  fteBands.forEach((b, i) => {
+    const contrib = (b.pct/100)*b.count;
+    head += b.count; weighted += contrib;
+    html += "<tr data-i='" + i + "'><td>Band " + (i+1) + "</td>" +
+      "<td><input data-f='pct' type='number' step='5' value='" + b.pct + "'></td>" +
+      "<td><input data-f='count' type='number' step='1' value='" + b.count + "'></td>" +
+      "<td class='n'>" + contrib.toFixed(2) + "</td></tr>";
+  });
+  $("fteBody").innerHTML = html;
+  $("fteHeadcount").textContent = head;
+  $("fteWeighted").textContent = weighted.toFixed(2);
+  document.querySelectorAll("#fteBody input").forEach(el => el.addEventListener("input", e => {
+    const i = +e.target.closest("tr").dataset.i;
+    fteBands[i][e.target.dataset.f] = parseFloat(e.target.value) || 0;
+    renderFteTable(); render();
+  }));
+  return { head, weighted };
 }
 
 function renderTeamsTable(){
   let allocMD = 0, allocPt = 0, allocFTE = 0;
-  const perFTE = Math.max(v("patientsPerFTE"), 1);
+  const perFTE = Math.max(v("patientsPerFTE"),1);
   let html = "";
   for (const t of teams){
     allocMD += t.mds; allocPt += t.patients;
-    const fteNeeded = t.patients / perFTE;
-    allocFTE += fteNeeded;
-    const ppmd = t.mds > 0 ? (t.patients / t.mds) : 0;
+    const fteNeeded = t.patients/perFTE; allocFTE += fteNeeded;
+    const ppmd = t.mds>0 ? t.patients/t.mds : 0;
     html += "<tr data-id='" + t.id + "'>" +
       "<td><input class='name' data-f='name' value='" + t.name + "'></td>" +
       "<td><input data-f='mds' type='number' step='1' value='" + t.mds + "'></td>" +
       "<td><input data-f='patients' type='number' step='5' value='" + t.patients + "'></td>" +
-      "<td class='n'>" + ppmd.toFixed(1) + "</td>" +
-      "<td class='n'>" + fteNeeded.toFixed(1) + "</td>" +
+      "<td class='n'>" + ppmd.toFixed(1) + "</td><td class='n'>" + fteNeeded.toFixed(1) + "</td>" +
       "<td><button class='del' data-id='" + t.id + "' title='Remove team'>\u00d7</button></td></tr>";
   }
   $("teamBody").innerHTML = html;
-  const ppmdAll = allocMD > 0 ? allocPt / allocMD : 0;
-  $("tAllocMD").textContent = allocMD;
-  $("tAllocPt").textContent = allocPt;
-  $("tAllocPPMD").textContent = ppmdAll.toFixed(1);
+  $("tAllocMD").textContent = allocMD; $("tAllocPt").textContent = allocPt;
+  $("tAllocPPMD").textContent = (allocMD>0 ? allocPt/allocMD : 0).toFixed(1);
   $("tAllocFTE").textContent = allocFTE.toFixed(1);
-
   document.querySelectorAll("#teamBody input").forEach(el => el.addEventListener("input", e => {
     const tr = e.target.closest("tr"); const t = teams.find(x => x.id === tr.dataset.id);
     const f = e.target.dataset.f;
-    t[f] = f === "name" ? e.target.value : (parseFloat(e.target.value) || 0);
-    buildTeamSelect();
-    renderTeamsTable(); render();
+    t[f] = f === "name" ? e.target.value : (parseFloat(e.target.value)||0);
+    buildTeamSelect(); renderTeamsTable(); render();
   }));
   document.querySelectorAll("#teamBody .del").forEach(b => b.addEventListener("click", () => {
     if (teams.length <= 1) return;
@@ -539,137 +629,132 @@ function renderTeamsTable(){
     if (activeTeam === b.dataset.id) activeTeam = teams[0].id;
     buildTeamSelect(); renderTeamsTable(); loadDOM(); render();
   }));
-
-  // Allocation vs program totals
   const progMD = v("totalMDs"), progPt = v("totalPatients");
   const msg = $("allocMsg");
   const dMD = allocMD - progMD, dPt = allocPt - progPt;
-  if (Math.abs(dMD) < 0.5 && Math.abs(dPt) < 0.5){
-    msg.className = "allocok"; msg.textContent = "Allocation matches the program totals exactly.";
-  } else {
+  if (Math.abs(dMD)<0.5 && Math.abs(dPt)<0.5){ msg.className="allocok"; msg.textContent="Allocation matches the program totals exactly."; }
+  else {
     const bits = [];
-    if (Math.abs(dMD) >= 0.5) bits.push((dMD > 0 ? "over-allocates " : "leaves ") + Math.abs(dMD) + " physician" + (Math.abs(dMD) === 1 ? "" : "s") + (dMD > 0 ? "" : " unassigned"));
-    if (Math.abs(dPt) >= 0.5) bits.push((dPt > 0 ? "over-allocates " : "leaves ") + Math.abs(dPt) + " patient" + (Math.abs(dPt) === 1 ? "" : "s") + (dPt > 0 ? "" : " unassigned"));
-    msg.className = "allocwarn"; msg.textContent = "Team allocation " + bits.join(" and ") + " versus the program totals above.";
+    if (Math.abs(dMD)>=0.5) bits.push((dMD>0?"over-allocates ":"leaves ")+Math.abs(dMD)+" physician"+(Math.abs(dMD)===1?"":"s")+(dMD>0?"":" unassigned"));
+    if (Math.abs(dPt)>=0.5) bits.push((dPt>0?"over-allocates ":"leaves ")+Math.abs(dPt)+" patient"+(Math.abs(dPt)===1?"":"s")+(dPt>0?"":" unassigned"));
+    msg.className="allocwarn"; msg.textContent="Team allocation "+bits.join(" and ")+" versus the program totals above.";
   }
+  return { allocMD };
 }
 
 function render(){
   saveDOM();
+  const fte = renderFteTable();
   renderTeamsTable();
 
-  // Program stats
-  const totalPatients = v("totalPatients"), perFTE = Math.max(v("patientsPerFTE"), 1);
-  const avgFTE = Math.max(v("avgFTE"), 0.01), totalMDs = v("totalMDs"), clinWeeks = v("clinweeks");
-  const fteReq = totalPatients / perFTE;
-  const fteSupply = totalMDs * avgFTE;
-  const mdsNeeded = Math.ceil(fteReq / avgFTE);
+  const totalPatients = v("totalPatients"), perFTE = Math.max(v("patientsPerFTE"),1);
+  const totalMDs = v("totalMDs");
+  const fteReq = totalPatients/perFTE;
+  const fteSupply = fte.weighted;
+  const mdsNeeded = fteBands.length && fteReq>0 ? Math.ceil(fteReq / (fte.head>0 ? fte.weighted/fte.head : 0.85)) : 0;
   $("outFTE").textContent = fteReq.toFixed(1);
-  const supplyEl = $("outFTEsupply");
-  supplyEl.textContent = fteSupply.toFixed(1);
-  supplyEl.className = "v num" + (fteSupply < fteReq ? " bad" : "");
-  $("outMDsNeeded").textContent = mdsNeeded;
-  $("outPPMD").textContent = totalMDs > 0 ? (totalPatients / totalMDs).toFixed(1) : "\u2014";
+  const supEl = $("outFTEsupply"); supEl.textContent = fteSupply.toFixed(1);
+  supEl.className = "v num" + (fteSupply < fteReq ? " bad" : "");
+  $("outMDsNeeded").textContent = mdsNeeded || "\u2014";
+  $("outPPMD").textContent = totalMDs>0 ? (totalPatients/totalMDs).toFixed(1) : "\u2014";
   $("progNote").innerHTML = totalPatients + " patients at " + perFTE + " per FTE need <strong>" + fteReq.toFixed(1) +
-    " FTE</strong>. " + totalMDs + " physicians at " + avgFTE + " average clinical FTE supply <strong>" + fteSupply.toFixed(1) +
-    " FTE</strong>" + (fteSupply < fteReq ? ", a shortfall of " + (fteReq - fteSupply).toFixed(1) + " FTE \u2014 the panel is understaffed at this ratio." :
-      ", covering the panel with " + (fteSupply - fteReq).toFixed(1) + " FTE to spare for leave.") +
-    " A comfortable target is roughly <strong>" + mdsNeeded + " physicians</strong>. Allocate them and the patients across teams below by area \u2014 busier areas carry more of both.";
+    " FTE</strong>. Your FTE bands supply <strong>" + fteSupply.toFixed(1) + " FTE</strong> from " + fte.head + " physicians" +
+    (fteSupply < fteReq ? ", a shortfall of " + (fteReq-fteSupply).toFixed(1) + " FTE." :
+      ", covering the panel with " + (fteSupply-fteReq).toFixed(1) + " FTE to spare for leave.") +
+    " Allocate physicians and patients across teams by area \u2014 busier areas carry more of both.";
 
-  // Scenario bars for the active team
   const results = {};
   for (const k of ORDER) results[k] = computeTeamScenario(activeTeam, k);
   const maxTotal = Math.max(...ORDER.map(k => results[k].total), 1);
   let bh = "";
   for (const k of ORDER){
-    const r = results[k], w = (r.total / maxTotal) * 100, isA = k === active;
-    bh += "<div class='barrow'><span class='name'" + (isA ? " style='color:var(--ink)'" : "") + ">" + SCENARIOS[k].label.split(" ")[0] +
-      "</span><div class='track'><div class='fill' style='width:" + w + "%;background:" + (isA ? "#2F6B5C" : "#9AA5AE") +
-      "'></div></div><span class='total num'>" + money(r.total) + "</span></div>";
+    const r = results[k], w = (r.total/maxTotal)*100, isA = k===active;
+    bh += "<div class='barrow'><span class='name'" + (isA?" style='color:var(--ink)'":"") + ">" + SCEN_LABEL[k].split(" ")[0] +
+      "</span><div class='track'><div class='fill' style='width:"+w+"%;background:"+(isA?"#2F6B5C":"#9AA5AE")+"'></div></div><span class='total num'>"+money(r.total)+"</span></div>";
   }
   $("scenarioBars").innerHTML = bh;
 
   const R = results[active];
   const tObj = teams.find(x => x.id === activeTeam);
   $("coverTeamName").textContent = tObj ? tObj.name : "";
-  $("coverScenarioName").textContent = SCENARIOS[active].label;
+  $("coverScenarioName").textContent = SCEN_LABEL[active];
   const gap = R.supplyWeeksPerTeam - R.demandWeeksPerTeam;
   const cn = $("coverNote");
-  cn.className = "callout" + (gap < 0 ? " risk" : "");
+  cn.className = "callout" + (gap<0?" risk":"");
   cn.innerHTML = "This team of " + R.teamSize + " demands <strong>" + Math.round(R.demandWeeksPerTeam) +
-    " physician-weeks</strong> a year to staff every line; at " + R.clinWeeks + " clinical weeks each it supplies <strong>" +
-    Math.round(R.supplyWeeksPerTeam) + "</strong>. " +
-    (gap < 0 ? "Shortfall of " + Math.round(-gap) + " weeks \u2014 needs float support or a lighter line commitment."
-             : Math.round(gap) + " weeks of slack for vacation, illness and conference leave.");
+    " physician-weeks</strong> a year; at " + R.clinWeeks + " clinical weeks each it supplies <strong>" + Math.round(R.supplyWeeksPerTeam) + "</strong>. " +
+    (gap<0 ? "Shortfall of " + Math.round(-gap) + " weeks \u2014 needs float support or a lighter line commitment."
+           : Math.round(gap) + " weeks of slack for vacation, illness and conference leave.");
 
   let rh = "";
-  for (const x of R.rows) rh += "<tr><td>" + x.m.name + "</td><td class='n'>" + x.staff + "</td><td class='n'>" +
-    x.weeksPerMD.toFixed(1) + "</td><td class='n'>" + (x.weeksPerMD / R.block).toFixed(1) + "</td></tr>";
+  for (const x of R.rows) rh += "<tr><td>"+x.meta.name+"</td><td class='n'>"+x.staff.toFixed(1)+"</td><td class='n'>"+x.weeksPerMD.toFixed(1)+"</td><td class='n'>"+(x.weeksPerMD/R.block).toFixed(1)+"</td></tr>";
   $("rosterBody").innerHTML = rh;
-  $("rosterWarn").hidden = gap >= 0;
-  if (gap < 0) $("rosterWarn").textContent = "Roster demands more weeks than this team can supply as configured.";
+  $("rosterWarn").hidden = gap>=0;
+  if (gap<0) $("rosterWarn").textContent = "Roster demands more weeks than this team can supply as configured.";
 
   $("blockLenNote").textContent = R.block;
   let prh = "";
   for (const x of R.rows){
-    const perBlock = x.rw.revenue * R.block, rot = x.weeksPerMD / R.block;
-    prh += "<tr><td>" + x.m.name + "</td><td class='n'>" + money(x.rw.revenue) + "</td><td class='n'>" + money(perBlock) +
-      "</td><td class='n'>" + rot.toFixed(1) + "</td><td class='n'>" + money(x.rw.revenue * x.weeksPerMD) + "</td></tr>";
+    const perBlock = x.rw.revenue*R.block, rot = x.weeksPerMD/R.block;
+    prh += "<tr><td>"+x.meta.name+"</td><td class='n'>"+money(x.rw.revenue)+"</td><td class='n'>"+money(perBlock)+"</td><td class='n'>"+rot.toFixed(1)+"</td><td class='n'>"+money(x.rw.revenue*x.weeksPerMD)+"</td></tr>";
   }
   $("perRotationBody").innerHTML = prh;
 
   let ih = "";
-  for (const x of R.rows) ih += "<tr><td>" + x.m.name + "</td><td class='n'>" + x.weeksPerMD.toFixed(1) + "</td><td class='n'>" + money(x.rw.revenue * x.weeksPerMD) + "</td></tr>";
-  ih += "<tr><td>G512 case management</td><td class='n'>\u2014</td><td class='n'>" + money(R.gAmount) + "</td></tr>";
-  ih += "<tr><td>CPOC and BBOC</td><td class='n'>\u2014</td><td class='n'>" + money(R.cpoc + R.bboc) + "</td></tr>";
-  ih += "<tr><td>On-call, stipends and ad hoc</td><td class='n'>\u2014</td><td class='n'>" + money(R.other) + "</td></tr>";
-  ih += "<tr class='sum'><td>Total</td><td class='n'>" + R.rows.reduce((a, x) => a + x.weeksPerMD, 0).toFixed(1) + "</td><td class='n'>" + money(R.total) + "</td></tr>";
+  for (const x of R.rows) ih += "<tr><td>"+x.meta.name+"</td><td class='n'>"+x.weeksPerMD.toFixed(1)+"</td><td class='n'>"+money(x.rw.revenue*x.weeksPerMD)+"</td></tr>";
+  ih += "<tr><td>G512 case management</td><td class='n'>\u2014</td><td class='n'>"+money(R.gAmount)+"</td></tr>";
+  ih += "<tr><td>CPOC and BBOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.cpoc+R.bboc)+"</td></tr>";
+  ih += "<tr><td>On-call, stipends and ad hoc</td><td class='n'>\u2014</td><td class='n'>"+money(R.other)+"</td></tr>";
+  ih += "<tr class='sum'><td>Total</td><td class='n'>"+R.rows.reduce((a,x)=>a+x.weeksPerMD,0).toFixed(1)+"</td><td class='n'>"+money(R.total)+"</td></tr>";
   $("incomeBody").innerHTML = ih;
 
+  // Per visit-type itemization
+  const st = teamState[activeTeam][active];
+  const visits = [
+    { name:"Inpatient — new consult", ev:hospNew(st.lines.hosp) },
+    { name:"Inpatient — subsequent (MRP)", ev:hospFu(st.lines.hosp, true) },
+    { name:"Inpatient — subsequent (non-MRP)", ev:hospFu(st.lines.hosp, false) },
+    { name:"Outpatient — new consult", ev:outpNew(st.lines.outp) },
+    { name:"Outpatient — follow-up", ev:outpFu(st.lines.outp) }
+  ];
   let it = "";
-  for (const x of R.rows){
-    const en = x.rw.en, ef = x.rw.ef;
-    it += "<tr class='group'><td>" + x.m.name + "</td><td class='n'>" + en.minutes + " min</td><td class='n'>" + ef.minutes + " min</td></tr>";
-    const all = [];
-    for (const l of en.lines) if (!all.includes(l.code)) all.push(l.code);
-    for (const l of ef.lines) if (!all.includes(l.code)) all.push(l.code);
-    for (const code of all){
-      const ln = en.lines.find(z => z.code === code), lf = ef.lines.find(z => z.code === code);
-      let label = code;
-      if (code === "K023") label = "K023 \u00d7 " + (ln ? ln.qty : 0) + " / \u00d7 " + (lf ? lf.qty : 0);
-      if (code === "SVP" || code === "E082") label = code + ", weighted";
-      it += "<tr><td class='code'>" + label + "</td><td class='n'>" + (ln ? money2(ln.amount) : "\u2014") + "</td><td class='n'>" + (lf ? money2(lf.amount) : "\u2014") + "</td></tr>";
+  for (const vt of visits){
+    it += "<tr class='group'><td>"+vt.name+"</td><td class='n'>"+vt.ev.minutes+" min</td><td></td></tr>";
+    for (const l of vt.ev.lines){
+      let label = l.code;
+      if (l.code === "K023") label = "K023 \u00d7 " + l.qty;
+      if (l.code === "E082") label = "E082 (MRP premium)";
+      it += "<tr><td class='code'>"+label+"</td><td></td><td class='n'>"+money2(l.amount)+"</td></tr>";
     }
-    it += "<tr class='encsum'><td>Per encounter</td><td class='n'>" + money2(en.total) + "</td><td class='n'>" + money2(ef.total) + "</td></tr>";
+    it += "<tr class='encsum'><td>Per visit</td><td></td><td class='n'>"+money2(vt.ev.total)+"</td></tr>";
   }
   $("itemBody").innerHTML = it;
 
   const codeTotals = {};
-  const addc = (c, q, a) => { if (!codeTotals[c]) codeTotals[c] = { qty:0, amount:0 }; codeTotals[c].qty += q; codeTotals[c].amount += a; };
-  for (const x of R.rows) for (const c in x.rw.codes) addc(c, x.rw.codes[c].qty * x.weeksPerMD, x.rw.codes[c].amount * x.weeksPerMD);
+  const addc = (c,q,a)=>{ if(!codeTotals[c])codeTotals[c]={qty:0,amount:0}; codeTotals[c].qty+=q; codeTotals[c].amount+=a; };
+  for (const x of R.rows) for (const c in x.rw.codes) addc(c, x.rw.codes[c].qty*x.weeksPerMD, x.rw.codes[c].amount*x.weeksPerMD);
   addc("G512", R.gClaims, R.gAmount);
   const grandTotal = R.annualFFS + R.gAmount + R.cpoc + R.bboc;
+  const order = ["A945","C882","A900","K023","B966","B998","E082","K121","K700","G512"];
   let cb = "";
-  const order = ["A945", "C882", "A900", "K023", "B966", "B998", "SVP", "E082", "G512"];
   for (const code of order){
     const d = codeTotals[code];
-    if (!d || d.amount === 0) continue;
-    cb += "<tr><td class='n' style='color:var(--ink)'>" + code + "</td><td class='n'>" + Math.round(d.qty).toLocaleString("en-CA") +
-      "</td><td class='n'>" + money(d.amount) + "</td><td class='n'>" + (d.amount / grandTotal * 100).toFixed(1) + "%</td></tr>";
+    if (!d || d.amount===0) continue;
+    cb += "<tr><td class='n' style='color:var(--ink)'>"+code+"</td><td class='n'>"+Math.round(d.qty).toLocaleString("en-CA")+"</td><td class='n'>"+money(d.amount)+"</td><td class='n'>"+(d.amount/grandTotal*100).toFixed(1)+"%</td></tr>";
   }
-  cb += "<tr><td class='n' style='color:var(--ink)'>CPOC</td><td class='n'>\u2014</td><td class='n'>" + money(R.cpoc) + "</td><td class='n'>" + (R.cpoc / grandTotal * 100).toFixed(1) + "%</td></tr>";
-  cb += "<tr><td class='n' style='color:var(--ink)'>BBOC</td><td class='n'>\u2014</td><td class='n'>" + money(R.bboc) + "</td><td class='n'>" + (R.bboc / grandTotal * 100).toFixed(1) + "%</td></tr>";
-  cb += "<tr class='sum'><td>FFS + G512 + on-call programs</td><td></td><td class='n'>" + money(grandTotal) + "</td><td class='n'>100%</td></tr>";
+  cb += "<tr><td class='n' style='color:var(--ink)'>CPOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.cpoc)+"</td><td class='n'>"+(R.cpoc/grandTotal*100).toFixed(1)+"%</td></tr>";
+  cb += "<tr><td class='n' style='color:var(--ink)'>BBOC</td><td class='n'>\u2014</td><td class='n'>"+money(R.bboc)+"</td><td class='n'>"+(R.bboc/grandTotal*100).toFixed(1)+"%</td></tr>";
+  cb += "<tr class='sum'><td>FFS + G512 + on-call programs</td><td></td><td class='n'>"+money(grandTotal)+"</td><td class='n'>100%</td></tr>";
   $("codeBody").innerHTML = cb;
 
   let flagged = false;
-  const parts = R.rows.filter(x => x.rw.hoursPerDay > 0).map(x => {
-    if (x.rw.hoursPerDay > 6.5) flagged = true;
-    return x.m.name.split(" ")[0].toLowerCase() + " " + x.rw.hoursPerDay.toFixed(1) + " h";
+  const parts = R.rows.filter(x => x.rw.hoursPerDay>0).map(x => {
+    if (x.rw.hoursPerDay>6.5) flagged = true;
+    return (x.key==="hosp"?"inpatient":"outpatient") + " " + x.rw.hoursPerDay.toFixed(1) + " h";
   });
   const hn = $("hoursNote");
-  hn.className = "callout" + (flagged ? " risk" : "");
-  hn.innerHTML = "Direct patient contact per clinical day: <strong>" + parts.join(", ") + "</strong>. " +
+  hn.className = "callout" + (flagged?" risk":"");
+  hn.innerHTML = "Direct patient contact per clinical day: <strong>"+parts.join(", ")+"</strong>. " +
     (flagged ? "At least one line exceeds six and a half hours face to face before charting, travel, family meetings or phone work. That line is probably not achievable as set."
              : "Each line leaves room for charting, family meetings, travel and phone work inside a normal day.");
 }
@@ -685,7 +770,7 @@ buildTabs();
 buildRoles();
 buildTeamSelect();
 loadDOM();
-document.querySelectorAll(".proinputs input, .panel.controls > .field input, .teamselect select, details.feecard input").forEach(el => el.addEventListener("input", render));
+document.querySelectorAll(".proinputs input, .panel.controls > .field input, details.feecard input").forEach(el => el.addEventListener("input", render));
 render();
 </script>
 </body>
