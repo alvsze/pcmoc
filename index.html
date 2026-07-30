@@ -185,6 +185,8 @@
       <div class="stat"><span class="l">FTE the roster supplies</span><span class="v num" id="outFTEsupply">—</span></div>
       <div class="stat"><span class="l">Physicians in bands</span><span class="v num" id="outHead">—</span></div>
       <div class="stat"><span class="l">Patients per MD, program</span><span class="v num" id="outPPMD">—</span></div>
+      <div class="stat"><span class="l">Weekend call weekends / MD / yr</span><span class="v num" id="outCallPerMD">—</span></div>
+      <div class="stat"><span class="l">Call weekends total / yr</span><span class="v num" id="outCallTotal">—</span></div>
     </div>
 
     <div class="fteband">
@@ -207,6 +209,21 @@
       </table>
       <button class="addbtn" id="addTeam">+ Add team</button>
       <div id="allocMsg"></div>
+    </div>
+
+    <div class="teambuilder" style="margin-top:16px">
+      <h3>Weekend inpatient on-call</h3>
+      <p class="h">Assumes 1 MD per inpatient site per weekend. One MD on the inpatient block covers 1 weekend. Call weekends are distributed evenly across all MDs in the program.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px 28px;margin-bottom:12px">
+        <div class="field"><label for="callSites">Inpatient sites needing weekend coverage</label><input class="num" id="callSites" type="number" step="1" value="2"></div>
+        <div class="field"><label for="callWeeks">Call weekends in the year</label><input class="num" id="callWeeks" type="number" step="1" value="52"></div>
+      </div>
+      <table class="grid2">
+        <thead><tr><th>Team</th><th>Physicians</th><th>Call weekends / MD</th><th>Weekends / rotation</th><th>Total weekends, team</th></tr></thead>
+        <tbody id="callBody"></tbody>
+        <tfoot><tr class="totals"><td>Program total</td><td class="n" id="callAllocMD">—</td><td class="n" id="callPerMD">—</td><td class="n" id="callPerRot">—</td><td class="n" id="callTotal">—</td></tr></tfoot>
+      </table>
+      <div id="callNote" style="margin-top:8px;font-size:12px;color:var(--ink-faint)"></div>
     </div>
 
     <div class="progNote" id="progNote"></div>
@@ -560,57 +577,119 @@ function weekRevenue2(h,o){
   return {codes,hrev,orev,hVis,oVis};
 }
 
-function renderFTE(){
-  let head=0,weighted=0,html="";
+function buildFTERows(){
+  let html="";
   fteBands.forEach((b,i)=>{
-    const c=(b.pct/100)*b.count, days=(b.pct/100)*Math.max(v("fteDays"),1);
-    head+=b.count; weighted+=c;
-    html+="<tr data-i='"+i+"'><td>Band "+(i+1)+"</td><td><input data-f='pct' type='number' step='5' value='"+b.pct+"'></td><td><input data-f='count' type='number' step='1' value='"+b.count+"'></td><td class='n'>"+days.toFixed(1)+"</td><td class='n'>"+c.toFixed(2)+"</td></tr>";
+    html+="<tr data-i='"+i+"'><td>Band "+(i+1)+"</td>"+
+      "<td><input data-f='pct' type='number' step='5' value='"+b.pct+"'></td>"+
+      "<td><input data-f='count' type='number' step='1' value='"+b.count+"'></td>"+
+      "<td class='n calc-days'></td><td class='n calc-fte'></td></tr>";
   });
   $("fteBody").innerHTML=html;
-  $("fteHeadcount").textContent=head; $("fteWeighted").textContent=weighted.toFixed(2);
   document.querySelectorAll("#fteBody input").forEach(el=>el.addEventListener("input",e=>{
     const i=+e.target.closest("tr").dataset.i;
     fteBands[i][e.target.dataset.f]=parseFloat(e.target.value)||0;
-    renderFTE();render();
+    updateFTECalcs(); render();
   }));
+}
+function updateFTECalcs(){
+  let head=0,weighted=0;
+  fteBands.forEach((b,i)=>{
+    const c=(b.pct/100)*b.count, days=(b.pct/100)*Math.max(v("fteDays"),1);
+    head+=b.count; weighted+=c;
+    const row=document.querySelector("#fteBody tr[data-i='"+i+"']");
+    if(row){
+      const cd=row.querySelector(".calc-days"); if(cd) cd.textContent=days.toFixed(1);
+      const cf=row.querySelector(".calc-fte");  if(cf) cf.textContent=c.toFixed(2);
+    }
+  });
+  $("fteHeadcount").textContent=head; $("fteWeighted").textContent=weighted.toFixed(2);
   return {head,weighted};
 }
-function renderTeams(){
-  let amd=0,apt=0,afte=0; const perFTE=Math.max(v("patientsPerFTE"),1); let html="";
+function renderFTE(){ return updateFTECalcs(); }
+// Build team rows HTML — called only when structure changes (add/remove team)
+function buildTeamRows(){
+  let html="";
   for (const t of teams){
-    amd+=t.mds;apt+=t.patients;const f=t.patients/perFTE;afte+=f;const p=t.mds>0?t.patients/t.mds:0;
-    html+="<tr data-id='"+t.id+"'><td><input class='name' data-f='name' value='"+t.name+"'></td><td><input data-f='mds' type='number' step='1' value='"+t.mds+"'></td><td><input data-f='patients' type='number' step='5' value='"+t.patients+"'></td><td class='n'>"+p.toFixed(1)+"</td><td class='n'>"+f.toFixed(1)+"</td><td><button class='del' data-id='"+t.id+"' title='Remove'>\u00d7</button></td></tr>";
+    html+="<tr data-id='"+t.id+"'><td><input class='name' data-f='name' value='"+t.name+"'></td>"+
+      "<td><input data-f='mds' type='number' step='1' value='"+t.mds+"'></td>"+
+      "<td><input data-f='patients' type='number' step='5' value='"+t.patients+"'></td>"+
+      "<td class='n calc-ppmd'></td><td class='n calc-fte'></td>"+
+      "<td><button class='del' data-id='"+t.id+"' title='Remove'>×</button></td></tr>";
   }
-  $("teamBody").innerHTML=html; $("tAllocMD").textContent=amd; $("tAllocPt").textContent=apt;
-  $("tAllocPPMD").textContent=(amd>0?apt/amd:0).toFixed(1); $("tAllocFTE").textContent=afte.toFixed(1);
+  $("teamBody").innerHTML=html;
+  // Attach listeners once after building — do NOT rebuild on every input
   document.querySelectorAll("#teamBody input").forEach(el=>el.addEventListener("input",e=>{
     const tr=e.target.closest("tr"),t=teams.find(x=>x.id===tr.dataset.id),f=e.target.dataset.f;
     t[f]=f==="name"?e.target.value:(parseFloat(e.target.value)||0);
-    buildTeamSelect();renderTeams();render();
+    buildTeamSelect(); updateTeamCalcs(); render();
   }));
   document.querySelectorAll("#teamBody .del").forEach(b=>b.addEventListener("click",()=>{
     if(teams.length<=1)return;teams=teams.filter(x=>x.id!==b.dataset.id);
     if(activeTeam===b.dataset.id)activeTeam=teams[0].id;
-    buildTeamSelect();renderTeams();loadDOM();render();
+    buildTeamSelect();buildTeamRows();updateTeamCalcs();loadDOM();render();
   }));
-  const pm=v("totalMDs"),pp=v("totalPatients"),dm=amd-pm,dp=apt-pp,msg=$("allocMsg");
+}
+// Update only the derived (read-only) cells and totals — safe to call during render
+function updateTeamCalcs(){
+  const perFTE=Math.max(v("patientsPerFTE"),1);
+  let amd=0,apt=0,afte=0;
+  for (const t of teams){
+    amd+=t.mds; apt+=t.patients;
+    const f=t.patients/perFTE; afte+=f;
+    const p=t.mds>0?t.patients/t.mds:0;
+    const row=document.querySelector("#teamBody tr[data-id='"+t.id+"']");
+    if(row){
+      const pp=row.querySelector(".calc-ppmd"); if(pp) pp.textContent=p.toFixed(1);
+      const pf=row.querySelector(".calc-fte");  if(pf) pf.textContent=f.toFixed(1);
+    }
+  }
+  $("tAllocMD").textContent=amd; $("tAllocPt").textContent=apt;
+  $("tAllocPPMD").textContent=(amd>0?apt/amd:0).toFixed(1); $("tAllocFTE").textContent=afte.toFixed(1);
+  const pm=v("totalMDs"),pp2=v("totalPatients"),dm=amd-pm,dp=apt-pp2,msg=$("allocMsg");
   if(Math.abs(dm)<0.5&&Math.abs(dp)<0.5){msg.className="allocok";msg.textContent="Allocation matches the program totals exactly.";}
   else{const b=[];
     if(Math.abs(dm)>=0.5)b.push((dm>0?"over-allocates ":"leaves ")+Math.abs(dm)+" physician"+(Math.abs(dm)===1?"":"s")+(dm>0?"":" unassigned"));
     if(Math.abs(dp)>=0.5)b.push((dp>0?"over-allocates ":"leaves ")+Math.abs(dp)+" patient"+(Math.abs(dp)===1?"":"s")+(dp>0?"":" unassigned"));
     msg.className="allocwarn";msg.textContent="Team allocation "+b.join(" and ")+" versus program totals above.";}
+  return {amd,apt,afte};
 }
+function renderTeams(){ updateTeamCalcs(); }
 
 function render(){
   saveDOM();
-  const ft=renderFTE(); renderTeams();
+  const ft=updateFTECalcs(); updateTeamCalcs();
   const totalP=v("totalPatients"),perFTE=Math.max(v("patientsPerFTE"),1),totalMDs=v("totalMDs");
   const fteReq=totalP/perFTE,fteSup=ft.weighted;
   $("outFTE").textContent=fteReq.toFixed(1);
   const se=$("outFTEsupply");se.textContent=fteSup.toFixed(1);se.className="v num"+(fteSup<fteReq?" bad":"");
   $("outHead").textContent=ft.head;
-  $("outPPMD").textContent=totalMDs>0?(totalP/totalMDs).toFixed(1):"\u2014";
+  $("outPPMD").textContent=totalMDs>0?(totalP/totalMDs).toFixed(1):"—";
+
+  // Weekend on-call distribution
+  const callSites=Math.max(v("callSites"),1), callWeekends=Math.max(v("callWeeks"),1);
+  const totalCallWknds = callSites * callWeekends;
+  const totalAllocMD = teams.reduce((a,t)=>a+t.mds,0);
+  const callPerMD = totalAllocMD > 0 ? totalCallWknds / totalAllocMD : 0;
+  const clinWeeksForCall = Math.max(v("clinweeks"),1);
+  const blockForCall = Math.max(v("block"),1);
+  const callPerRotation = clinWeeksForCall > 0 ? callPerMD * blockForCall / clinWeeksForCall : 0;
+  $("outCallPerMD").textContent = callPerMD.toFixed(1);
+  $("outCallTotal").textContent = Math.round(totalCallWknds);
+  let cbHtml = "";
+  for (const t of teams){
+    const tWknds = totalAllocMD > 0 ? (t.mds / totalAllocMD) * totalCallWknds : 0;
+    const tPerMD = t.mds > 0 ? tWknds / t.mds : 0;
+    const tPerRot = clinWeeksForCall > 0 ? tPerMD * blockForCall / clinWeeksForCall : 0;
+    cbHtml += "<tr><td>"+t.name+"</td><td class='n'>"+t.mds+"</td><td class='n'>"+tPerMD.toFixed(1)+"</td><td class='n'>"+tPerRot.toFixed(2)+"</td><td class='n'>"+Math.round(tWknds)+"</td></tr>";
+  }
+  $("callBody").innerHTML = cbHtml;
+  $("callAllocMD").textContent = totalAllocMD;
+  $("callPerMD").textContent = callPerMD.toFixed(1);
+  $("callPerRot").textContent = callPerRotation.toFixed(2);
+  $("callTotal").textContent = Math.round(totalCallWknds);
+  $("callNote").textContent = callSites+" site"+(callSites===1?"":"s")+" × "+callWeekends+" weekends = "+Math.round(totalCallWknds)+" total call weekends ÷ "+totalAllocMD+" physicians = "+callPerMD.toFixed(1)+" weekends / MD / yr ("+callPerRotation.toFixed(2)+" per "+blockForCall+"-week block).";
+
   $("progNote").innerHTML=totalP+" patients at "+perFTE+" per FTE need <strong>"+fteReq.toFixed(1)+" FTE</strong>. Your FTE bands supply <strong>"+fteSup.toFixed(1)+" FTE</strong> from "+ft.head+" physicians"+(fteSup<fteReq?", a shortfall of "+(fteReq-fteSup).toFixed(1)+" FTE.":", covering the panel with "+(fteSup-fteReq).toFixed(1)+" FTE to spare for leave.")+" Allocate physicians and patients across teams by area.";
 
   const clinWeeks=v("clinweeks"),block=Math.max(v("block"),1);
@@ -727,11 +806,11 @@ function syncE083(){ const el=$("f_E083"); if(el) el.value=(v("f_C882")*0.30).to
 $("f_C882") && document.getElementById("f_C882").addEventListener("input", ()=>{ syncE083(); render(); });
 $("addTeam").addEventListener("click",()=>{
   const id="t"+(teamSeq++);teams.push({id,name:"Team "+teams.length,mds:4,patients:80});
-  buildTeamSelect();renderTeams();render();
+  buildTeamSelect();buildTeamRows();updateTeamCalcs();render();
 });
 $("activeTeam").addEventListener("change",e=>{saveDOM();activeTeam=e.target.value;const gp=$("g_panel");if(gp)delete gp.dataset.manual;loadDOM();render();});
-buildTabs();buildRoles();buildTeamSelect();loadDOM();syncE083();
-document.querySelectorAll(".proinputs input,.panel.controls > .field input,details.feecard input").forEach(el=>el.addEventListener("input",render));
+buildTabs();buildRoles();buildTeamSelect();buildFTERows();buildTeamRows();loadDOM();syncE083();
+document.querySelectorAll(".proinputs input,.panel.controls > .field input,details.feecard input,#callSites,#callWeeks").forEach(el=>el.addEventListener("input",render));
 render();
 </script>
 </body>
